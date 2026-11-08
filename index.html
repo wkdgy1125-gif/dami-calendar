@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1e1b4b">
+<meta name="robots" content="noindex, nofollow">
+<title>담이 전용 캘린더</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="담이 캘린더">
+<script>
+/* 가족과 일정을 함께 쓰려면: Cloudflare에 올린 담이 캘린더 서버 주소를 아래에 넣으세요.
+   예) window.DAMI_API='https://dami-calendar.내아이디.workers.dev';
+   비워 두면 이 기기 안에만 저장돼요(타설집계 앱과 같은 방식). */
+window.DAMI_API='';
+window.__STATIC_APP__=true;
+window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후휴가 사용 가능", "date": "2027-04-25", "ampm": "", "hour": 12, "min": 0, "memo": "배우자는 출산예정일 50일 전부터 출산 후 120일까지 유급휴가 20일(근무일 기준)을 쓸 수 있어요. 3번까지 나눠 쓸 수 있어요. (2026.9.18 시행)\n\n신청·문의: 회사 인사팀 · 급여 신청은 고용24", "author": "육아 지원 일정", "cat": "work", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "고용24", "u": "https://www.work24.go.kr"}, {"t": "고용노동부", "u": "https://www.moel.go.kr"}], "sources": [{"t": "배우자 출산전후휴가 50일 전부터 (더체크)", "u": "https://thecheck.co.kr/spouse-pregnancy-childbirth-support-sep18-2026/"}, {"t": "배우자 출산휴가 120일 이내 (경기워킹맘센터)", "u": "https://www.gworkingmom.net/network/articles/129?page=4"}]}, {"id": "dam-02", "title": "출산전후휴가 시작 가능 (최대 44일 전)", "date": "2027-05-01", "ampm": "", "hour": 12, "min": 0, "memo": "출산전후휴가는 총 90일이고, 출산 후 기간이 45일 이상 남아야 해서 예정일 기준 최대 44일 전부터 쓸 수 있어요. 급여 상한은 30일 기준 220만원(2026년).\n\n신청·문의: 회사 인사팀 · 고용24", "author": "육아 지원 일정", "cat": "work", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "고용24", "u": "https://www.work24.go.kr"}, {"t": "고용노동부", "u": "https://www.moel.go.kr"}], "sources": [{"t": "출산휴가·육아휴직 급여 총정리 (옐로우잇)", "u": "https://yellowit.co.kr/%ec%a7%81%ec%9e%a5%ec%9d%b8-%ec%97%b0%eb%a7%90%ec%a0%95%ec%82%b0-%ea%b5%ad%eb%af%bc%eb%82%b4%ec%9d%bc%eb%b0%b0%ec%9b%80%ec%b9%b4%eb%93%9c-%eb%85%b8%eb%8f%99%eb%b2%95/%ec%b6%9c%ec%82%b0%ed%9c%b4%ea%b0%80-%ec%9c%a1%ec%95%84%ed%9c%b4%ec%a7%81-%ea%b8%89%ec%97%ac-%ec%b4%9d%ec%a0%95%eb%a6%ac%ef%bd%9c%ec%95%8c%eb%b0%94%c2%b75%ec%9d%b8-%eb%af%b8%eb%a7%8c%c2%b7%ea%b3%84/"}]}, {"id": "dam-03", "title": "⏰ 산모·신생아 건강관리(산후도우미) 신청 시작", "date": "2027-05-05", "ampm": "", "hour": 12, "min": 0, "memo": "출산 예정 40일 전부터 출산 후 60일까지 신청할 수 있어요. 소득 기준이 있고 예외 지원도 있어요.\n\n신청·문의: 주소지 보건소 · 복지로\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "deadline", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "복지로", "u": "https://www.bokjiro.go.kr"}], "sources": [{"t": "산후도우미 신청기한·서울형 산후조리경비 (글래스월렛)", "u": "https://glasswallet.com/blog/postpartum-doula-government-support-guide/"}]}, {"id": "dam-04", "title": "🎂 담이 출산 예정일", "date": "2027-06-14", "ampm": "", "hour": 12, "min": 0, "memo": "담이 출산 예정일이에요. 육아 지원 일정은 이 날짜 기준으로 등록돼 있어서, 실제 생일이 다르면 일정 날짜도 바꿔야 해요.", "author": "육아 지원 일정", "cat": "day", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z"}, {"id": "dam-05", "title": "B형간염 1차 접종", "date": "2027-06-14", "ampm": "", "hour": 12, "min": 0, "memo": "출생 직후 접종해요. 다음은 생후 1개월(2차), 6개월(3차).\n\n신청·문의: 분만 병원\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "vax", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "예방접종도우미 (질병관리청)", "u": "https://nip.kdca.go.kr"}], "sources": [{"t": "표준예방접종 일정표 (과천시 보건소)", "u": "https://www.gccity.go.kr/ghc/contents.do?mId=0406000000"}]}, {"id": "dam-06", "title": "경기: 시·군 자체 출산지원금 확인", "date": "2027-06-14", "ampm": "", "hour": 12, "min": 0, "memo": "경기도 산후조리비(50만원)는 2026.9.30 신청분까지만 지원하고 종료됐어요. 하남·시흥처럼 시·군이 자체로 주는 산후조리비·출생축하금이 있으니 사는 시·군에 확인하세요.\n\n신청·문의: 시·군청 홈페이지 · 동 행정복지센터\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "money", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "정부24", "u": "https://www.gov.kr"}], "sources": [{"t": "경기도 산후조리비 지원 종료 (광주시청)", "u": "https://www.gjcity.go.kr/depart/contents.do?mId=0805070900"}]}, {"id": "dam-07", "title": "충북 임산부 산후조리비 50만원 확인", "date": "2027-06-21", "ampm": "", "hour": 12, "min": 0, "memo": "충북에 출생등록한 산모에게 50만원(다태아 100만원)을 줘요. 신청 기한·조건은 주민센터에 확인하세요.\n\n신청·문의: 동 행정복지센터\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "money", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "충청북도청", "u": "https://www.chungbuk.go.kr"}], "sources": [{"t": "충북 출산·육아 정책 2026 (서울신문)", "u": "https://m.seoul.co.kr/news/2026/02/20/20260220022002"}]}, {"id": "dam-08", "title": "영유아검진 1차 시작 (생후 14~35일)", "date": "2027-06-28", "ampm": "", "hour": 12, "min": 0, "memo": "국민건강보험공단 영유아 건강검진 1차(무료). 생후 14~35일 사이에 받아요.\n\n신청·문의: 검진기관 · The건강보험 앱\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "check", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "국민건강보험공단", "u": "https://www.nhis.or.kr"}], "sources": [{"t": "영유아검진 차수별 시기 (육아크루, 건보공단 기준)", "u": "https://www.yugacrew.com/crewletter/infant-checkup-schedule-by-age"}]}, {"id": "dam-09", "title": "⏰ BCG(결핵) 접종 권장 기한", "date": "2027-07-12", "ampm": "", "hour": 12, "min": 0, "memo": "생후 4주 이내 접종을 권장해요. 무료는 피내용만이고, 위탁의료기관에서 맞아야 해요.\n\n신청·문의: 위탁의료기관 · 보건소\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "deadline", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "예방접종도우미 (질병관리청)", "u": "https://nip.kdca.go.kr"}], "sources": [{"t": "표준예방접종 일정표 (과천시 보건소)", "u": "https://www.gccity.go.kr/ghc/contents.do?mId=0406000000"}, {"t": "어린이 국가예방접종 (대전시)", "u": "https://www.daejeon.go.kr/drh/DrhContentsHtmlView.do?menuSeq=1680"}]}, {"id": "dam-10", "title": "⏰ 출생신고 기한 (1개월)", "date": "2027-07-13", "ampm": "", "hour": 12, "min": 0, "memo": "출생 후 1개월 이내에 신고해야 해요. 늦으면 5만원 이하 과태료가 부과될 수 있어요. 출생신고 때 「행복출산 원스톱」으로 부모급여·아동수당·첫만남이용권을 한 번에 신청하면 편해요.\n\n신청·문의: 주민센터 · 대법원 전자가족관계등록시스템 · 정부24\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "deadline", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "전자가족관계등록시스템 (출생신고)", "u": "https://efamily.scourt.go.kr"}, {"t": "정부24", "u": "https://www.gov.kr"}], "sources": [{"t": "출생신고 1개월·부모급여 60일 (틸노트, 2026.10)", "u": "https://tilnote.io/pages/6ae8b40ca2d593b65846a2a2"}]}, {"id": "dam-11", "title": "B형간염 2차 접종", "date": "2027-07-14", "ampm": "", "hour": 12, "min": 0, "memo": "생후 1개월. BCG와 같이 맞아도 돼요.\n\n신청·문의: 소아청소년과\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "vax", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "예방접종도우미 (질병관리청)", "u": "https://nip.kdca.go.kr"}], "sources": [{"t": "표준예방접종 일정표 (과천시 보건소)", "u": "https://www.gccity.go.kr/ghc/contents.do?mId=0406000000"}]}, {"id": "dam-12", "title": "⏰ 영유아검진 1차 마지막 날", "date": "2027-07-19", "ampm": "", "hour": 12, "min": 0, "memo": "1차 검진 기간(생후 14~35일)이 끝나는 날이에요.\n\n신청·문의: 검진기관\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "deadline", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "국민건강보험공단", "u": "https://www.nhis.or.kr"}], "sources": [{"t": "영유아검진 차수별 시기 (육아크루, 건보공단 기준)", "u": "https://www.yugacrew.com/crewletter/infant-checkup-schedule-by-age"}]}, {"id": "dam-13", "title": "⏰ 부모급여·아동수당 소급 마감 (60일)", "date": "2027-08-12", "ampm": "", "hour": 12, "min": 0, "memo": "출생일 포함 60일 이내에 신청하면 태어난 달부터 받아요. 넘기면 신청한 달부터만 나와요.\n· 부모급여: 0세 월 100만원\n· 아동수당: 월 10만원 이상(지역별 차등)\n· 첫만남이용권: 200만원(국민행복카드)도 함께 신청하세요.\n\n신청·문의: 정부24 · 복지로 · 주민센터 (문의 129)\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "deadline", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "정부24", "u": "https://www.gov.kr"}, {"t": "복지로", "u": "https://www.bokjiro.go.kr"}], "sources": [{"t": "출생신고 1개월·부모급여 60일 (틸노트, 2026.10)", "u": "https://tilnote.io/pages/6ae8b40ca2d593b65846a2a2"}, {"t": "부모급여 2026 안내 (베이비뉴스)", "u": "https://www.ibabynews.com/contents/guide-parent-pay"}]}, {"id": "dam-14", "title": "⏰ 산모·신생아 건강관리 신청 마감", "date": "2027-08-12", "ampm": "", "hour": 12, "min": 0, "memo": "출산 후 60일까지 신청할 수 있어요. 아직 신청 안 했다면 오늘이 마지막이에요.\n\n신청·문의: 주소지 보건소 · 복지로\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "deadline", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "복지로", "u": "https://www.bokjiro.go.kr"}], "sources": [{"t": "산후도우미 신청기한·서울형 산후조리경비 (글래스월렛)", "u": "https://glasswallet.com/blog/postpartum-doula-government-support-guide/"}]}, {"id": "dam-15", "title": "2개월 접종 (DTaP·IPV·Hib·PCV·로타 1차)", "date": "2027-08-14", "ampm": "", "hour": 12, "min": 0, "memo": "생후 2개월 기본 접종이에요. 로타바이러스는 1차 접종 시기가 정해져 있어 미루지 마세요.\n\n신청·문의: 소아청소년과\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "vax", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "예방접종도우미 (질병관리청)", "u": "https://nip.kdca.go.kr"}], "sources": [{"t": "표준예방접종 일정표 (과천시 보건소)", "u": "https://www.gccity.go.kr/ghc/contents.do?mId=0406000000"}]}, {"id": "dam-16", "title": "배우자 출산전후휴가 사용 기한 (예정일 기준)", "date": "2027-10-11", "ampm": "", "hour": 12, "min": 0, "memo": "실제 생일 기준 120일이 마감이에요. 담이가 태어나면 날짜가 다시 계산돼요.\n\n신청·문의: 회사 인사팀", "author": "육아 지원 일정", "cat": "work", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "고용24", "u": "https://www.work24.go.kr"}, {"t": "고용노동부", "u": "https://www.moel.go.kr"}], "sources": [{"t": "배우자 출산전후휴가 50일 전부터 (더체크)", "u": "https://thecheck.co.kr/spouse-pregnancy-childbirth-support-sep18-2026/"}, {"t": "배우자 출산휴가 120일 이내 (경기워킹맘센터)", "u": "https://www.gworkingmom.net/network/articles/129?page=4"}]}, {"id": "dam-17", "title": "4개월 접종 (DTaP·IPV·Hib·PCV·로타 2차)", "date": "2027-10-14", "ampm": "", "hour": 12, "min": 0, "memo": "신청·문의: 소아청소년과\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "vax", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "예방접종도우미 (질병관리청)", "u": "https://nip.kdca.go.kr"}], "sources": [{"t": "표준예방접종 일정표 (과천시 보건소)", "u": "https://www.gccity.go.kr/ghc/contents.do?mId=0406000000"}]}, {"id": "dam-18", "title": "영유아검진 2차 시작 (4~6개월)", "date": "2027-10-14", "ampm": "", "hour": 12, "min": 0, "memo": "신체계측·문진·건강교육.\n\n신청·문의: 검진기관\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "check", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "국민건강보험공단", "u": "https://www.nhis.or.kr"}], "sources": [{"t": "영유아검진 차수별 시기 (육아크루, 건보공단 기준)", "u": "https://www.yugacrew.com/crewletter/infant-checkup-schedule-by-age"}]}, {"id": "dam-19", "title": "⏰ 서울형 산후조리경비 신청 마감 (180일)", "date": "2027-12-10", "ampm": "", "hour": 12, "min": 0, "memo": "서울 거주 산모·서울 출생신고 시 첫째 100만원 바우처. 출산일로부터 180일 이내, 산모 본인만 신청할 수 있어요. 2026.7.1부터 신청일 기준 서울 거주 90일 요건이 있어요.\n\n신청·문의: 탄생육아 몽땅정보통 (온라인)\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "deadline", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "탄생육아 몽땅정보통 (서울)", "u": "https://umppa.seoul.go.kr"}], "sources": [{"t": "산후도우미 신청기한·서울형 산후조리경비 (글래스월렛)", "u": "https://glasswallet.com/blog/postpartum-doula-government-support-guide/"}, {"t": "서울형 산후조리경비 (동대문구 보건소)", "u": "https://www.ddm.go.kr/health/contents.do?key=3361"}]}, {"id": "dam-20", "title": "⏰ 충북 출산육아수당 1회차 신청 (6개월 이내)", "date": "2027-12-13", "ampm": "", "hour": 12, "min": 0, "memo": "충북 출산육아수당은 6세까지 총 1,000만원을 나눠 받아요. 1회차는 300만원이고, 출생일 기준 부모 중 1명이 충북에 6개월 이상 주민등록이 있어야 해요. 이후 회차는 생일마다 지급돼요. 신청 기한은 이전 지침 기준이니 주민센터에서 꼭 확인하세요.\n\n신청·문의: 주소지 동 행정복지센터 · 정부24\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "deadline", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "충청북도청", "u": "https://www.chungbuk.go.kr"}, {"t": "정부24", "u": "https://www.gov.kr"}], "sources": [{"t": "충북 출산육아수당 신청·자격 (스터디거브)", "u": "https://studygov.kr/blog/1030-chungbuk-childbirth-parenting-allowance-support/"}, {"t": "충북 출산·육아 정책 2026 (서울신문)", "u": "https://m.seoul.co.kr/news/2026/02/20/20260220022002"}]}, {"id": "dam-21", "title": "6개월 접종 (DTaP·IPV·Hib·PCV 3차, B형간염 3차)", "date": "2027-12-14", "ampm": "", "hour": 12, "min": 0, "memo": "로타텍은 3차까지 맞아요. 생후 6개월부터 매년 가을 인플루엔자 접종도 받을 수 있어요.\n\n신청·문의: 소아청소년과\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "vax", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "예방접종도우미 (질병관리청)", "u": "https://nip.kdca.go.kr"}], "sources": [{"t": "표준예방접종 일정표 (과천시 보건소)", "u": "https://www.gccity.go.kr/ghc/contents.do?mId=0406000000"}]}, {"id": "dam-22", "title": "청주시 시간제보육 이용 가능 (6개월부터)", "date": "2027-12-14", "ampm": "", "hour": 12, "min": 0, "memo": "부모급여(현금)를 받으면 생후 6~36개월에 시간당 5,000원(부모 부담 2,000원)으로 시간제보육을 쓸 수 있어요. 60시간.\n\n신청·문의: 아이사랑 · 주민센터\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "money", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "청주시청", "u": "https://www.cheongju.go.kr"}], "sources": [{"t": "2026 청주시 출산·육아 지원 (베이비뉴스)", "u": "https://birth.ibabynews.com/%EC%B6%A9%EC%B2%AD%EB%B6%81%EB%8F%84/%EC%B2%AD%EC%A3%BC%EC%8B%9C"}]}, {"id": "dam-23", "title": "⏰ 영유아검진 2차 마지막 날", "date": "2028-01-13", "ampm": "", "hour": 12, "min": 0, "memo": "신청·문의: 검진기관\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "deadline", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "국민건강보험공단", "u": "https://www.nhis.or.kr"}], "sources": [{"t": "영유아검진 차수별 시기 (육아크루, 건보공단 기준)", "u": "https://www.yugacrew.com/crewletter/infant-checkup-schedule-by-age"}]}, {"id": "dam-24", "title": "영유아검진 3차 시작 (9~12개월)", "date": "2028-03-14", "ampm": "", "hour": 12, "min": 0, "memo": "이번부터 발달선별검사(K-DST)가 들어가요.\n\n신청·문의: 검진기관\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "check", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "국민건강보험공단", "u": "https://www.nhis.or.kr"}], "sources": [{"t": "영유아검진 차수별 시기 (육아크루, 건보공단 기준)", "u": "https://www.yugacrew.com/crewletter/infant-checkup-schedule-by-age"}]}, {"id": "dam-25", "title": "🎂 담이 첫 돌", "date": "2028-06-14", "ampm": "", "hour": 12, "min": 0, "memo": "※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "day", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z"}, {"id": "dam-26", "title": "부모급여 변경: 월 50만원 (만 1세)", "date": "2028-06-14", "ampm": "", "hour": 12, "min": 0, "memo": "만 1세부터 부모급여가 월 100만원 → 50만원으로 바뀌어요. 어린이집을 다니면 보육료 바우처로 대신 지원돼요.\n\n신청·문의: 복지로\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "money", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "복지로", "u": "https://www.bokjiro.go.kr"}], "sources": [{"t": "부모급여 2026 안내 (베이비뉴스)", "u": "https://www.ibabynews.com/contents/guide-parent-pay"}]}, {"id": "dam-27", "title": "돌 접종 (12~15개월)", "date": "2028-06-14", "ampm": "", "hour": 12, "min": 0, "memo": "MMR 1차, 수두, A형간염 1차, Hib·폐렴구균 4차, 일본뇌염.\n\n신청·문의: 소아청소년과\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "vax", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "예방접종도우미 (질병관리청)", "u": "https://nip.kdca.go.kr"}], "sources": [{"t": "표준예방접종 일정표 (과천시 보건소)", "u": "https://www.gccity.go.kr/ghc/contents.do?mId=0406000000"}]}, {"id": "dam-28", "title": "⏰ 영유아검진 3차 마지막 날", "date": "2028-07-13", "ampm": "", "hour": 12, "min": 0, "memo": "신청·문의: 검진기관\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "deadline", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "국민건강보험공단", "u": "https://www.nhis.or.kr"}], "sources": [{"t": "영유아검진 차수별 시기 (육아크루, 건보공단 기준)", "u": "https://www.yugacrew.com/crewletter/infant-checkup-schedule-by-age"}]}, {"id": "dam-29", "title": "DTaP 4차 접종 (15~18개월)", "date": "2028-09-14", "ampm": "", "hour": 12, "min": 0, "memo": "A형간염 2차는 1차 접종 6~12개월 뒤.\n\n신청·문의: 소아청소년과\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "vax", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "예방접종도우미 (질병관리청)", "u": "https://nip.kdca.go.kr"}], "sources": [{"t": "표준예방접종 일정표 (과천시 보건소)", "u": "https://www.gccity.go.kr/ghc/contents.do?mId=0406000000"}]}, {"id": "dam-30", "title": "영유아검진 4차 시작 (18~24개월)", "date": "2028-12-14", "ampm": "", "hour": 12, "min": 0, "memo": "첫 구강검진도 이때부터(18~29개월) 받을 수 있어요.\n\n신청·문의: 검진기관 · 치과\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "check", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "국민건강보험공단", "u": "https://www.nhis.or.kr"}], "sources": [{"t": "영유아검진 차수별 시기 (육아크루, 건보공단 기준)", "u": "https://www.yugacrew.com/crewletter/infant-checkup-schedule-by-age"}, {"t": "영유아 구강검진 시기 (육아크루)", "u": "https://www.yugacrew.com/crewletter/oral-examination"}]}, {"id": "dam-31", "title": "첫만남이용권 잔액 확인", "date": "2029-04-14", "ampm": "", "hour": 12, "min": 0, "memo": "사용기한이 2개월 남았어요. 남은 포인트를 확인하세요.\n\n신청·문의: 국민행복카드 앱\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "money", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "국민행복카드 바우처", "u": "https://www.voucher.go.kr"}, {"t": "복지로", "u": "https://www.bokjiro.go.kr"}], "sources": [{"t": "첫만남이용권 사용기간 2년 (하남시청)", "u": "https://www.hanam.go.kr/health/contents.do?key=7301"}]}, {"id": "dam-32", "title": "⏰ 첫만남이용권 사용기한 만료", "date": "2029-06-13", "ampm": "", "hour": 12, "min": 0, "memo": "2024년 이후 출생아는 출생일로부터 2년까지 쓸 수 있어요. 지나면 남은 포인트는 사라져요.\n\n신청·문의: 국민행복카드\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "deadline", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "국민행복카드 바우처", "u": "https://www.voucher.go.kr"}, {"t": "복지로", "u": "https://www.bokjiro.go.kr"}], "sources": [{"t": "첫만남이용권 사용기간 2년 (하남시청)", "u": "https://www.hanam.go.kr/health/contents.do?key=7301"}]}, {"id": "dam-33", "title": "부모급여 종료 (만 2세)", "date": "2029-06-14", "ampm": "", "hour": 12, "min": 0, "memo": "부모급여는 만 2세 전까지예요. 집에서 키우면 가정양육수당, 어린이집은 보육료 지원으로 넘어가요. 아동수당은 계속 나와요.\n\n신청·문의: 복지로 · 주민센터\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "money", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "복지로", "u": "https://www.bokjiro.go.kr"}], "sources": [{"t": "부모급여 2026 안내 (베이비뉴스)", "u": "https://www.ibabynews.com/contents/guide-parent-pay"}]}, {"id": "dam-34", "title": "일본뇌염 추가 접종 (24개월~)", "date": "2029-06-14", "ampm": "", "hour": 12, "min": 0, "memo": "백신 종류(사백신·생백신)에 따라 차수가 달라요.\n\n신청·문의: 소아청소년과\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "vax", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "예방접종도우미 (질병관리청)", "u": "https://nip.kdca.go.kr"}], "sources": [{"t": "표준예방접종 일정표 (과천시 보건소)", "u": "https://www.gccity.go.kr/ghc/contents.do?mId=0406000000"}]}, {"id": "dam-35", "title": "⏰ 영유아검진 4차 마지막 날", "date": "2029-07-13", "ampm": "", "hour": 12, "min": 0, "memo": "구강검진은 29개월까지예요.\n\n신청·문의: 검진기관\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "deadline", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "국민건강보험공단", "u": "https://www.nhis.or.kr"}], "sources": [{"t": "영유아검진 차수별 시기 (육아크루, 건보공단 기준)", "u": "https://www.yugacrew.com/crewletter/infant-checkup-schedule-by-age"}, {"t": "영유아 구강검진 시기 (육아크루)", "u": "https://www.yugacrew.com/crewletter/oral-examination"}]}, {"id": "dam-36", "title": "영유아검진 5차 (30~36개월)", "date": "2029-12-14", "ampm": "", "hour": 12, "min": 0, "memo": "구강검진 2차는 30~41개월.\n\n신청·문의: 검진기관\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "check", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "국민건강보험공단", "u": "https://www.nhis.or.kr"}], "sources": [{"t": "영유아검진 차수별 시기 (육아크루, 건보공단 기준)", "u": "https://www.yugacrew.com/crewletter/infant-checkup-schedule-by-age"}, {"t": "영유아 구강검진 시기 (육아크루)", "u": "https://www.yugacrew.com/crewletter/oral-examination"}]}, {"id": "dam-37", "title": "영유아검진 6차 (42~48개월)", "date": "2030-12-14", "ampm": "", "hour": 12, "min": 0, "memo": "구강검진 3차는 42~53개월.\n\n신청·문의: 검진기관\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "check", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "국민건강보험공단", "u": "https://www.nhis.or.kr"}], "sources": [{"t": "영유아검진 차수별 시기 (육아크루, 건보공단 기준)", "u": "https://www.yugacrew.com/crewletter/infant-checkup-schedule-by-age"}, {"t": "영유아 구강검진 시기 (육아크루)", "u": "https://www.yugacrew.com/crewletter/oral-examination"}]}, {"id": "dam-38", "title": "만 4~6세 추가 접종 시작", "date": "2031-06-14", "ampm": "", "hour": 12, "min": 0, "memo": "DTaP 5차, IPV 4차, MMR 2차.\n\n신청·문의: 소아청소년과\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "vax", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "예방접종도우미 (질병관리청)", "u": "https://nip.kdca.go.kr"}], "sources": [{"t": "표준예방접종 일정표 (과천시 보건소)", "u": "https://www.gccity.go.kr/ghc/contents.do?mId=0406000000"}]}, {"id": "dam-39", "title": "영유아검진 7차 (54~60개월)", "date": "2031-12-14", "ampm": "", "hour": 12, "min": 0, "memo": "구강검진 4차는 54~65개월.\n\n신청·문의: 검진기관\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "check", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "국민건강보험공단", "u": "https://www.nhis.or.kr"}], "sources": [{"t": "영유아검진 차수별 시기 (육아크루, 건보공단 기준)", "u": "https://www.yugacrew.com/crewletter/infant-checkup-schedule-by-age"}, {"t": "영유아 구강검진 시기 (육아크루)", "u": "https://www.yugacrew.com/crewletter/oral-examination"}]}, {"id": "dam-40", "title": "영유아검진 8차 (마지막) (66~71개월)", "date": "2032-12-14", "ampm": "", "hour": 12, "min": 0, "memo": "초등학교 입학 전 마지막 영유아검진이에요.\n\n신청·문의: 검진기관\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "check", "createdAt": "2026-11-08T14:30:00.000Z", "updatedAt": "2026-11-08T14:30:00.000Z", "links": [{"t": "국민건강보험공단", "u": "https://www.nhis.or.kr"}], "sources": [{"t": "영유아검진 차수별 시기 (육아크루, 건보공단 기준)", "u": "https://www.yugacrew.com/crewletter/infant-checkup-schedule-by-age"}]}, {"id": "dam-41", "title": "임신·출산 진료비 바우처 100만원 신청", "date": "2026-11-09", "ampm": "", "hour": 12, "min": 0, "memo": "산부인과에서 임신확인서를 받아 국민행복카드로 신청해요. 단태아 100만원(다태아 140만원). 진료비·약값에 쓰고, 출산(예정)일로부터 2년까지 써요.\n\n신청·문의: 국민건강보험공단 · 국민행복카드 카드사", "author": "육아 지원 일정", "cat": "money", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "국민행복카드 바우처", "u": "https://www.voucher.go.kr"}, {"t": "국민건강보험공단", "u": "https://www.nhis.or.kr"}], "sources": [{"t": "임신·출산 진료비 바우처 100만원 (머니룩, 2026.8)", "u": "https://asiatop.co.kr/gov-support/pregnancy-childbirth-medical-voucher-happycard/"}, {"t": "2026 임산부 혜택 가이드 (베이비뉴스)", "u": "https://www.ibabynews.com/contents/2026-pregnancy-benefits-guide"}]}, {"id": "dam-42", "title": "보건소 임산부 등록 (엽산·철분제·산전검사)", "date": "2026-11-09", "ampm": "", "hour": 12, "min": 0, "memo": "보건소에 등록하면 엽산제(임신 초기)·철분제(16주 이후)·산전검사·임산부 배지를 받을 수 있어요. 정부24 「맘편한 임신」으로 여러 서비스를 한 번에 신청할 수 있어요.\n\n신청·문의: 주소지 보건소 · 정부24 맘편한 임신", "author": "육아 지원 일정", "cat": "money", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "정부24", "u": "https://www.gov.kr"}], "sources": [{"t": "맘편한 임신·임신기 지원 (옐로우잇)", "u": "https://yellowit.co.kr/%ec%a7%81%ec%9e%a5%ec%9d%b8-%ec%97%b0%eb%a7%90%ec%a0%95%ec%82%b0-%ea%b5%ad%eb%af%bc%eb%82%b4%ec%9d%bc%eb%b0%b0%ec%9b%80%ec%b9%b4%eb%93%9c-%eb%85%b8%eb%8f%99%eb%b2%95/2%ec%b0%a8-%ec%95%84%eb%8f%99%eb%8f%8c%eb%b4%84%ec%bf%a0%ed%8f%b0-%ec%82%ac%ec%9a%a9%eb%b0%a9%eb%b2%95-%eb%b0%8f-%ea%b8%b0%ea%b0%84-%ec%82%ac%ec%9a%a9%ec%b2%98/"}, {"t": "2026 임산부 혜택 가이드 (베이비뉴스)", "u": "https://www.ibabynews.com/contents/2026-pregnancy-benefits-guide"}]}, {"id": "dam-43", "title": "KTX·SRT 임산부 할인 등록", "date": "2026-11-09", "ampm": "", "hour": 12, "min": 0, "memo": "코레일 회원 + 임산부 등록 시 KTX 일반실·일반열차 40% 할인, KTX 특실은 일반실 가격. 동행 1명도 같은 할인. 출산예정일로부터 1년까지.\n\n신청·문의: 정부24 맘편한 임신 · 코레일 역 창구", "author": "육아 지원 일정", "cat": "money", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "코레일", "u": "https://www.letskorail.com"}, {"t": "정부24", "u": "https://www.gov.kr"}], "sources": [{"t": "임산부 KTX 40% 할인 (베이비뉴스, 2026.10)", "u": "https://www.ibabynews.com/news/articleView.html?idxno=156356"}, {"t": "임산부 KTX 할인 출산예정일 1년까지 (내 손안에 서울)", "u": "https://mediahub.seoul.go.kr/archives/2009835"}]}, {"id": "dam-44", "title": "임신기 근로시간 단축 (12주 이내)", "date": "2026-11-09", "ampm": "", "hour": 12, "min": 0, "memo": "임신 12주 이내와 32주 이후에 하루 2시간 단축을 신청할 수 있고 임금은 깎이지 않아요. 시작 3일 전까지 진단서를 붙여 회사에 문서로 신청해요.\n\n신청·문의: 회사 인사팀 · 고용노동부 1350", "author": "육아 지원 일정", "cat": "work", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "고용노동부", "u": "https://www.moel.go.kr"}], "sources": [{"t": "임신기 근로시간 단축 대상 (경기워킹맘센터)", "u": "https://gworkingmom.net/working_parents/maternity/single/11"}, {"t": "2026 임산부 혜택 (육아크루)", "u": "https://www.yugacrew.com/crewletter/pregnant-benefits-2026"}]}, {"id": "dam-45", "title": "⏰ 임신기 근로시간 단축(12주 이내) 신청 마지막 날", "date": "2026-11-27", "ampm": "", "hour": 12, "min": 0, "memo": "임신 12주(2026.11.30)까지만 쓸 수 있고, 시작 3일 전까지 신청해야 해요.\n\n신청·문의: 회사 인사팀", "author": "육아 지원 일정", "cat": "deadline", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "고용노동부", "u": "https://www.moel.go.kr"}], "sources": [{"t": "임신기 근로시간 단축 대상 (경기워킹맘센터)", "u": "https://gworkingmom.net/working_parents/maternity/single/11"}, {"t": "2026 임산부 혜택 (육아크루)", "u": "https://www.yugacrew.com/crewletter/pregnant-benefits-2026"}]}, {"id": "dam-46", "title": "산후조리원 상담·예약 시작", "date": "2026-11-09", "ampm": "", "hour": 12, "min": 0, "memo": "인기 조리원은 임신 초기에 예약이 차는 경우가 많아요. 서울형 산후조리경비·첫만남이용권으로 일부 결제할 수 있는지도 함께 물어보세요.\n\n신청·문의: 조리원 상담", "author": "육아 지원 일정", "cat": "shop", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z"}, {"id": "dam-47", "title": "마트·브랜드 베이비클럽 가입", "date": "2026-11-09", "ampm": "", "hour": 12, "min": 0, "memo": "이마트 맘키즈클럽처럼 임산부·영유아 회원에게 정기 할인(예: 매달 1~14일 육아용품 할인)이나 샘플·쿠폰을 주는 곳이 많아요. 임신확인서가 필요한 곳도 있어요.\n\n신청·문의: 각 마트·브랜드 앱", "author": "육아 지원 일정", "cat": "shop", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "sources": [{"t": "이마트 맘키즈클럽 (베이비뉴스)", "u": "https://www.ibabynews.com/news/articleView.html?idxno=1312"}]}, {"id": "dam-48", "title": "서울 임산부 교통비 70만원 신청 시작 (12주~)", "date": "2026-11-30", "ampm": "", "hour": 12, "min": 0, "memo": "임신 12주가 지나면 신청할 수 있어요. 대중교통·택시·자가용 유류비에 쓰는 포인트예요. 2026.7.1부터 신청일 기준 서울 3개월 이상 거주 요건이 있어요.\n\n신청·문의: 탄생육아 몽땅정보통 · 동 주민센터", "author": "육아 지원 일정", "cat": "money", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "탄생육아 몽땅정보통 (서울)", "u": "https://umppa.seoul.go.kr"}], "sources": [{"t": "지역별 임산부 교통비 (틸노트, 2026.10)", "u": "https://tilnote.io/pages/6ae7623da565f4932c73b272"}, {"t": "서울 임산부 교통비 거주요건 (육아크루)", "u": "https://www.yugacrew.com/crewletter/pregnant-transportation"}]}, {"id": "dam-49", "title": "산모교실 신청 (무료·선물)", "date": "2026-12-28", "ampm": "", "hour": 12, "min": 0, "memo": "베이비뉴스 맘스클래스 같은 산모교실은 참가비 없이 강의를 듣고 육아용품 선물·경품을 받을 수 있어요. 임신 중기에 미리 신청해 두세요.\n\n신청·문의: 산모교실 주최사 홈페이지", "author": "육아 지원 일정", "cat": "shop", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "베이비뉴스 (산모교실)", "u": "https://www.ibabynews.com"}], "sources": [{"t": "산모교실 맘스클래스 혜택 (베이비뉴스)", "u": "https://www.ibabynews.com/news/articleView.html?idxno=62840"}]}, {"id": "dam-50", "title": "⏰ 태아보험 가입 권장 시기 (보통 22주 전)", "date": "2027-01-25", "ampm": "", "hour": 12, "min": 0, "memo": "태아보험은 선천이상 등 일부 보장을 22주 전후까지 가입해야 하는 상품이 많아요. 보험사·상품마다 기준이 다르니 미리 비교하세요.\n\n신청·문의: 보험사 상담", "author": "육아 지원 일정", "cat": "deadline", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z"}, {"id": "dam-51", "title": "코베 등 상반기 베이비페어 일정 확인", "date": "2027-03-15", "ampm": "", "hour": 12, "min": 0, "memo": "코베 베이비페어는 예년에 4~5월 코엑스에서 열렸어요. 2027년 일정은 아직 미발표(2026.10 기준)라 공식 홈페이지에서 확인하세요. 사전등록하면 무료입장·사은품이 있는 경우가 많아요.\n\n신청·문의: 코베 공식 홈페이지", "author": "육아 지원 일정", "cat": "shop", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "코베 베이비페어", "u": "https://www.cobe.co.kr"}], "sources": [{"t": "2026·2027 코엑스 베이비페어 일정 (육아크루)", "u": "https://www.yugacrew.com/crewletter/coex-baby-fair-2026"}, {"t": "베페·코베 차이와 참가 방법 (육아크루)", "u": "https://www.yugacrew.com/crewletter/babyfair"}]}, {"id": "dam-52", "title": "베페 베이비페어 사전등록", "date": "2027-03-25", "ampm": "", "hour": 12, "min": 0, "memo": "베페 베이비페어(2027.4.1~4.4) 가기 전에 홈페이지에서 사전등록하면 무료입장·쿠폰을 받을 수 있는 경우가 많아요.\n\n신청·문의: 베페 공식 홈페이지", "author": "육아 지원 일정", "cat": "shop", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "베페 베이비페어", "u": "https://www.befe.co.kr"}], "sources": [{"t": "2026·2027 코엑스 베이비페어 일정 (육아크루)", "u": "https://www.yugacrew.com/crewletter/coex-baby-fair-2026"}, {"t": "베페·코베 차이와 참가 방법 (육아크루)", "u": "https://www.yugacrew.com/crewletter/babyfair"}]}, {"id": "dam-53", "title": "베페 베이비페어 (4/1~4/4, 삼성 코엑스)", "date": "2027-04-01", "ampm": "", "hour": 12, "min": 0, "memo": "삼성 코엑스 Hall A, 오전 10시~오후 6시. 유모차·카시트·출산준비물을 비교하고 박람회 할인으로 사기 좋은 시기예요(임신 30주 무렵).\n\n신청·문의: 베페 공식 홈페이지", "author": "육아 지원 일정", "cat": "shop", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "베페 베이비페어", "u": "https://www.befe.co.kr"}], "sources": [{"t": "2026·2027 코엑스 베이비페어 일정 (육아크루)", "u": "https://www.yugacrew.com/crewletter/coex-baby-fair-2026"}, {"t": "베페·코베 차이와 참가 방법 (육아크루)", "u": "https://www.yugacrew.com/crewletter/babyfair"}]}, {"id": "dam-54", "title": "임신기 근로시간 단축 다시 가능 (32주~)", "date": "2027-04-13", "ampm": "", "hour": 12, "min": 0, "memo": "임신 32주 이후에도 하루 2시간 단축(임금 유지)을 다시 신청할 수 있어요. 시작 3일 전까지 진단서와 함께 신청해요.\n\n신청·문의: 회사 인사팀", "author": "육아 지원 일정", "cat": "work", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "고용노동부", "u": "https://www.moel.go.kr"}], "sources": [{"t": "임신기 근로시간 단축 대상 (경기워킹맘센터)", "u": "https://gworkingmom.net/working_parents/maternity/single/11"}, {"t": "2026 임산부 혜택 (육아크루)", "u": "https://www.yugacrew.com/crewletter/pregnant-benefits-2026"}]}, {"id": "dam-55", "title": "만삭사진 촬영 시기 (32~36주)", "date": "2027-04-19", "ampm": "", "hour": 12, "min": 0, "memo": "배가 가장 예쁘게 나오는 시기로 보통 32~36주에 찍어요. 스튜디오는 미리 예약하세요.\n\n신청·문의: 스튜디오", "author": "육아 지원 일정", "cat": "shop", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z"}, {"id": "dam-56", "title": "출산가방 싸기 · 카시트 설치", "date": "2027-05-03", "ampm": "", "hour": 12, "min": 0, "memo": "36주 전에 출산가방을 준비하고, 퇴원할 때 쓸 카시트를 미리 설치해 두세요(6세 미만 카시트 의무).", "author": "육아 지원 일정", "cat": "shop", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z"}, {"id": "dam-57", "title": "출산가구 전기요금 할인 신청 (출생신고 후)", "date": "2027-06-28", "ampm": "", "hour": 12, "min": 0, "memo": "출생일로부터 3년 미만 아기가 있는 집은 주택용 전기요금 30%(월 최대 1만6천원)를 할인받아요. 신청한 달부터 적용되니 출생신고 때 행복출산으로 함께 신청하세요.\n\n신청·문의: 한전ON · 123 · 정부24 행복출산\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "money", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "한전ON (전기요금 할인)", "u": "https://online.kepco.co.kr"}], "sources": [{"t": "출산가구 전기요금 할인 (베이비뉴스)", "u": "https://www.ibabynews.com/news/articleView.html?idxno=156327"}, {"t": "전기요금 복지할인 신청방법 (더인포헌터)", "u": "https://theinfohunter.com/?p=672"}]}, {"id": "dam-58", "title": "어린이집 입소대기 등록", "date": "2027-06-28", "ampm": "", "hour": 12, "min": 0, "memo": "출생신고 후 바로 대기 등록할 수 있어요. 인기 어린이집은 대기가 길어서 일찍 해 두는 게 좋아요.\n\n신청·문의: 아이사랑 포털\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "money", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "아이사랑 (어린이집)", "u": "https://www.childcare.go.kr"}]}, {"id": "dam-59", "title": "기저귀·분유 바우처 확인 (소득 기준)", "date": "2027-06-28", "ampm": "", "hour": 12, "min": 0, "memo": "기준중위소득 100% 이하 가구는 기저귀 월 9만원(분유는 수유 불가 사유 시 월 11만원)을 생후 24개월까지 받을 수 있어요.\n\n신청·문의: 보건소 · 복지로\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "money", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "복지로", "u": "https://www.bokjiro.go.kr"}], "sources": [{"t": "기저귀·분유 바우처 소득기준 (스터디거브)", "u": "https://studygov.kr/blog/1029-childbirth-support-36/"}]}, {"id": "dam-60", "title": "서울 엄마아빠택시 신청 확인", "date": "2027-07-14", "ampm": "", "hour": 12, "min": 0, "memo": "서울에서 24개월 이하 아기를 키우면 카시트 장착 택시 이용권(연 10만원)을 받을 수 있어요. 올해 운영 여부를 확인하세요.\n\n신청·문의: 서울시 · 탄생육아 몽땅정보통\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "money", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "탄생육아 몽땅정보통 (서울)", "u": "https://umppa.seoul.go.kr"}], "sources": [{"t": "서울 엄마아빠택시 (아시아경제)", "u": "https://cm.asiae.co.kr/en/article/2024021606582808827"}]}, {"id": "dam-61", "title": "충북 결혼·출산가정 대출이자 지원 확인", "date": "2027-07-14", "ampm": "", "hour": 12, "min": 0, "memo": "충북은 결혼·출산가정 대출이자를 5년간 총 250만원까지 지원해요(2026년 기준). 조건을 주민센터에 확인하세요.\n\n신청·문의: 충북 · 동 행정복지센터\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "money", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "충청북도청", "u": "https://www.chungbuk.go.kr"}], "sources": [{"t": "충북 출산·육아 정책 2026 (서울신문)", "u": "https://m.seoul.co.kr/news/2026/02/20/20260220022002"}]}, {"id": "dam-62", "title": "50일 촬영", "date": "2027-08-02", "ampm": "", "hour": 12, "min": 0, "memo": "보통 생후 50일 전후에 찍어요. 스튜디오 무료 촬영 이벤트가 많으니 미리 비교해 예약하세요.\n\n신청·문의: 스튜디오\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "shop", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z"}, {"id": "dam-63", "title": "하반기 베이비페어 일정 확인 (첫만남이용권 사용 가능)", "date": "2027-08-01", "ampm": "", "hour": 12, "min": 0, "memo": "태어난 뒤라 첫만남이용권으로 결제할 수 있어요. 예년에는 8월·10~11월에 코엑스 베이비페어가 열렸어요.\n\n신청·문의: 베페·코베 공식 홈페이지\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "shop", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "베페 베이비페어", "u": "https://www.befe.co.kr"}, {"t": "코베 베이비페어", "u": "https://www.cobe.co.kr"}, {"t": "국민행복카드 바우처", "u": "https://www.voucher.go.kr"}], "sources": [{"t": "베페·코베 차이와 참가 방법 (육아크루)", "u": "https://www.yugacrew.com/crewletter/babyfair"}, {"t": "첫만남이용권 사용기간 2년 (하남시청)", "u": "https://www.hanam.go.kr/health/contents.do?key=7301"}]}, {"id": "dam-64", "title": "부모급여·아동수당 입금일 (매월 25일)", "date": "2027-08-25", "ampm": "", "hour": 12, "min": 0, "memo": "두 수당은 매달 25일에 들어와요. 첫 입금은 신청 처리 후라 시점이 다를 수 있어요.\n\n신청·문의: 복지로\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "money", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "복지로", "u": "https://www.bokjiro.go.kr"}], "sources": [{"t": "2026 국가 출산지원 총정리 (베이비뉴스)", "u": "https://www.ibabynews.com/contents/guide-birth-support-national"}]}, {"id": "dam-65", "title": "💯 담이 백일", "date": "2027-09-21", "ampm": "", "hour": 12, "min": 0, "memo": "태어난 날을 1일로 세서 100일째 되는 날이에요.\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "day", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z"}, {"id": "dam-66", "title": "⏰ 고위험 임신 의료비 신청 마감 (해당 시)", "date": "2027-12-13", "ampm": "", "hour": 12, "min": 0, "memo": "고위험 임신 질환으로 입원 치료를 받았다면 분만 후 6개월 안에 의료비(최대 300만원)를 신청할 수 있어요. 해당될 때만 챙기세요.\n\n신청·문의: 주소지 보건소\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "deadline", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "복지로", "u": "https://www.bokjiro.go.kr"}], "sources": [{"t": "고위험 임신 의료비 분만 후 6개월 내 신청 (베이비뉴스)", "u": "https://www.ibabynews.com/news/articleView.html?idxno=62840"}]}, {"id": "dam-67", "title": "돌잔치 장소 예약", "date": "2027-12-14", "ampm": "", "hour": 12, "min": 0, "memo": "돌잔치는 보통 6개월 전쯤 예약해요.\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "shop", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z"}, {"id": "dam-68", "title": "연말정산: 출산세액공제·조리원비 챙기기", "date": "2028-01-15", "ampm": "", "hour": 12, "min": 0, "memo": "2027년 출산분 연말정산에서 출산·입양 세액공제(첫째 30만원)와 산후조리원비 의료비 공제(출산 1회 200만원 한도)를 챙기세요. 영수증을 모아 두세요.\n\n신청·문의: 회사 · 홈택스 간소화\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "money", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "홈택스", "u": "https://www.hometax.go.kr"}], "sources": [{"t": "2027 연말정산 출산 공제 (육아크루)", "u": "https://www.yugacrew.com/crewletter/year-end-tax-2027-changes"}, {"t": "출산·입양 세액공제 30·50·70만원 (머니룩)", "u": "https://asiatop.co.kr/tax/child-tax-credit-and-allowance-may-filing/"}]}, {"id": "dam-69", "title": "⏰ 6+6 부모육아휴직 시작 마감 (생후 18개월)", "date": "2028-12-13", "ampm": "", "hour": 12, "min": 0, "memo": "부모가 모두 생후 18개월 안에 육아휴직을 시작하면 첫 6개월 급여 상한이 월 200만→450만원까지 올라가요. 휴직 시작일 기준이에요.\n\n신청·문의: 고용24 · 1350\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "deadline", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "고용24", "u": "https://www.work24.go.kr"}], "sources": [{"t": "6+6 부모육아휴직 조건 (틸노트, 2026.10)", "u": "https://tilnote.io/pages/6aeb56c69025115e50edde73"}]}, {"id": "dam-70", "title": "KTX·SRT 임산부 할인 종료", "date": "2028-06-13", "ampm": "", "hour": 12, "min": 0, "memo": "임산부 할인은 출산예정일로부터 1년까지예요.\n\n신청·문의: 코레일\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "money", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "코레일", "u": "https://www.letskorail.com"}, {"t": "정부24", "u": "https://www.gov.kr"}], "sources": [{"t": "임산부 KTX 40% 할인 (베이비뉴스, 2026.10)", "u": "https://www.ibabynews.com/news/articleView.html?idxno=156356"}, {"t": "임산부 KTX 할인 출산예정일 1년까지 (내 손안에 서울)", "u": "https://mediahub.seoul.go.kr/archives/2009835"}]}, {"id": "dam-71", "title": "⏰ 신생아 특례대출 신청 기한 (출산 2년)", "date": "2029-06-13", "ampm": "", "hour": 12, "min": 0, "memo": "출산 2년 이내 가구가 주택 구입·전세자금을 낮은 금리로 빌릴 수 있어요(2026년 부부합산 소득 2억원 이하). 필요하면 기한 전에 신청하세요.\n\n신청·문의: 주택도시기금 · 은행\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "deadline", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "주택도시기금 (신생아 특례대출)", "u": "https://nhuf.molit.go.kr"}], "sources": [{"t": "신생아 특례대출 조건 (이코노미유)", "u": "https://www.ieconomyu.com/%EC%8B%A0%EC%83%9D%EC%95%84-%ED%8A%B9%EB%A1%80%EB%8C%80%EC%B6%9C-%EC%99%84%EB%B2%BD-%EA%B0%80%EC%9D%B4%EB%93%9C-2/"}]}, {"id": "dam-72", "title": "⏰ 임신·출산 진료비 바우처 사용기한", "date": "2029-06-13", "ampm": "", "hour": 12, "min": 0, "memo": "국민행복카드 진료비 바우처는 출산(예정)일로부터 2년까지 써요. 남은 금액을 확인하세요. 2세 미만 아기 진료비에도 쓸 수 있어요.\n\n신청·문의: 국민행복카드\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "deadline", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "국민행복카드 바우처", "u": "https://www.voucher.go.kr"}, {"t": "국민건강보험공단", "u": "https://www.nhis.or.kr"}], "sources": [{"t": "임신·출산 진료비 바우처 100만원 (머니룩, 2026.8)", "u": "https://asiatop.co.kr/gov-support/pregnancy-childbirth-medical-voucher-happycard/"}, {"t": "2026 임산부 혜택 가이드 (베이비뉴스)", "u": "https://www.ibabynews.com/contents/2026-pregnancy-benefits-guide"}]}, {"id": "dam-73", "title": "출산가구 전기요금 할인 종료 (3년)", "date": "2030-06-13", "ampm": "", "hour": 12, "min": 0, "memo": "출생일로부터 3년이 되는 달까지 할인이 적용돼요.\n\n신청·문의: 한전\n\n※ 출산 예정일(2027.6.14) 기준 날짜예요.", "author": "육아 지원 일정", "cat": "money", "createdAt": "2026-11-08T14:55:00.000Z", "updatedAt": "2026-11-08T14:55:00.000Z", "links": [{"t": "한전ON (전기요금 할인)", "u": "https://online.kepco.co.kr"}], "sources": [{"t": "출산가구 전기요금 할인 (베이비뉴스)", "u": "https://www.ibabynews.com/news/articleView.html?idxno=156327"}, {"t": "전기요금 복지할인 신청방법 (더인포헌터)", "u": "https://theinfohunter.com/?p=672"}]}], "baby": {"date": "2027-06-14", "born": false, "order": "1", "regions": ["chungbuk", "seoul", "gyeonggi"], "imported": true}, "exportedAt": "2026-11-09T00:00:00+09:00"};
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Jua&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:light;
+    --bg:#f5f6f8; --card:#fff; --ink:#1f2328; --muted:#6b7280; --line:#e5e7eb;
+    --accent:#2f6fed; --accent-soft:#e8f0fe; --sun:#e5484d; --sat:#2f6fed;
+    --today:#fff7d6; --radius:12px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Noto Sans KR",system-ui,-apple-system,sans-serif;font-size:15px}
+  button{font:inherit;cursor:pointer}
+  .wrap{max-width:1200px;margin:0 auto;padding:20px 16px 60px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+  h1{font-size:22px;margin:0;font-weight:700;letter-spacing:-.02em}
+  .hl{display:flex;align-items:center;gap:10px;flex-wrap:wrap;min-width:0}
+  .dl-opt{color:var(--ink);display:block;width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:10px;padding:12px 14px;margin-bottom:10px}
+  .dl-opt b{display:block;font-size:15px;margin-bottom:3px}
+  .dl-opt span{font-size:13px;color:var(--muted);line-height:1.5}
+  .dl-opt:hover{border-color:var(--accent);background:var(--accent-soft)}
+  .btn{border:1px solid var(--line);background:var(--card);color:var(--ink);
+    padding:8px 14px;border-radius:8px;font-weight:500;white-space:nowrap}
+  .btn:hover{background:#f0f2f5}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn.primary:hover{filter:brightness(.95)}
+  .btn.danger{color:var(--sun);border-color:#f3c7c8}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  .editing-badge{display:none;font-size:12px;color:var(--accent);background:var(--accent-soft);
+    padding:3px 8px;border-radius:999px;margin-left:8px;vertical-align:middle;font-weight:500}
+  body.edit .editing-badge{display:inline-block}
+
+  .toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--card);
+    border:1px solid var(--line);border-radius:var(--radius);padding:10px 12px;margin-bottom:12px}
+  .nav{display:flex;gap:6px;align-items:center}
+  .nav .btn{padding:8px 11px}
+  .range{font-weight:700;font-size:17px;margin:0 8px;min-width:140px}
+  .spacer{flex:1}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .seg button{border:0;background:var(--card);padding:8px 14px;border-right:1px solid var(--line)}
+  .seg button:last-child{border-right:0}
+  .seg button.on{background:var(--accent);color:#fff}
+
+  .status{font-size:13px;color:var(--muted);margin:0 2px 10px;min-height:18px}
+
+  .cal{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .dow,.grid{display:grid;grid-template-columns:repeat(7,1fr)}
+  .dow div{padding:8px;text-align:center;font-size:13px;font-weight:500;color:var(--muted);
+    border-bottom:1px solid var(--line);background:#fafbfc}
+  .dow div.sun{color:var(--sun)} .dow div.sat{color:var(--sat)}
+  .day{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px;
+    min-height:110px;position:relative;min-width:0}
+  .day:nth-child(7n){border-right:0}
+  .grid.week .day{min-height:340px}
+  .grid.two .day{min-height:200px}
+  .day.out{background:#fbfbfc}
+  .day.out .num{color:#c0c4cc}
+  .day.today{background:var(--today)}
+  body.edit .day{cursor:pointer}
+  body.edit .day:hover{box-shadow:inset 0 0 0 2px var(--accent-soft)}
+  .num{font-size:13px;font-weight:500;margin-bottom:4px;display:flex;justify-content:space-between}
+  .num .md{color:var(--muted);font-weight:400;font-size:12px}
+  .day.sun .num>span:first-child{color:var(--sun)}
+  .day.sat .num>span:first-child{color:var(--sat)}
+  .ev{display:block;width:100%;text-align:left;border:0;border-left:3px solid var(--c,#2f6fed);
+    background:color-mix(in srgb,var(--c,#2f6fed) 12%,white);border-radius:5px;padding:3px 6px;
+    margin-bottom:3px;font-size:12.5px;line-height:1.35;color:var(--ink);overflow:hidden}
+  .grid.month .ev{white-space:nowrap;text-overflow:ellipsis}
+  .ev .t{color:var(--muted);font-size:11.5px;margin-right:4px}
+  .ev .a{display:block;color:var(--muted);font-size:11px}
+  .grid.month .ev .a{display:none}
+  .more{font-size:12px;color:var(--muted);padding:0 4px}
+
+  .ev.auto{border-left-style:solid;background:color-mix(in srgb,var(--c) 9%,white);font-weight:500}
+  .ev.auto.deadline{background:color-mix(in srgb,var(--c) 14%,white)}
+  .baby-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);padding:10px 12px;margin-bottom:12px;font-size:14px}
+  .baby-bar .info{flex:1;min-width:200px}
+  .baby-bar .info b{font-weight:700}
+  .baby-bar .info small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:4px}
+  .legend i{width:10px;height:10px;border-radius:3px;display:inline-block;background:var(--c)}
+  .toggle{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#374151;white-space:nowrap}
+  .toggle input{width:auto}
+  .checks{display:flex;flex-wrap:wrap;gap:12px}
+  .checks label{display:inline-flex;align-items:center;gap:6px;font-weight:400;margin:0}
+  .checks input{width:auto}
+  .hint{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5}
+  .tag{display:inline-block;font-size:12px;padding:2px 8px;border-radius:999px;background:color-mix(in srgb,var(--c) 14%,white);color:var(--c);font-weight:500;margin-bottom:8px}
+  .warn{font-size:12.5px;color:#92400e;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:8px 10px;line-height:1.5}
+  .empty-note{padding:14px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+
+  /* modal */
+  .backdrop{position:fixed;inset:0;background:rgba(15,23,42,.45);display:none;
+    align-items:center;justify-content:center;padding:16px;z-index:50}
+  .backdrop.open{display:flex}
+  .modal{background:var(--card);border-radius:14px;width:100%;max-width:440px;
+    box-shadow:0 20px 50px rgba(0,0,0,.2);max-height:92vh;overflow:auto}
+  .modal-h{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 6px}
+  .modal-h h2{font-size:18px;margin:0}
+  .x{border:0;background:none;font-size:14px;color:var(--muted);padding:6px}
+  .modal-b{padding:8px 18px 4px}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:#374151}
+  .field label .req{color:var(--sun)}
+  input,select,textarea{width:100%;font:inherit;padding:9px 10px;border:1px solid var(--line);
+    border-radius:8px;background:#fff;color:var(--ink)}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+  textarea{min-height:70px;resize:vertical}
+  .row{display:flex;gap:8px}
+  .row>*{flex:1}
+  .modal-f{display:flex;gap:8px;justify-content:flex-end;padding:10px 18px 18px}
+  .modal-f .left{margin-right:auto}
+  .detail p{margin:0 0 10px;line-height:1.55}
+  .detail .lbl{color:var(--muted);font-size:13px;display:block}
+  .links{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+  .links a{display:flex;align-items:center;gap:6px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#f8f5ff;color:#4c2fb0;text-decoration:none;font-weight:500;font-size:14px;word-break:break-all}
+  .links.src a{background:#fff;color:#475569;font-weight:400;font-size:13px;padding:8px 10px}
+  .links a::after{content:'↗';margin-left:auto;opacity:.6}
+  .err{color:var(--sun);font-size:13px;min-height:16px}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#111827;color:#fff;
+    padding:10px 16px;border-radius:999px;font-size:14px;opacity:0;transition:.25s;pointer-events:none;z-index:60}
+  .toast.show{opacity:1}
+
+  /* mobile: week views become a list */
+  @media (max-width:680px){
+    h1{font-size:19px}
+    .range{min-width:0;font-size:15px;margin:0 4px}
+    .toolbar .spacer{display:none}
+    .seg{order:5;width:100%}
+    .seg button{flex:1}
+    .day{min-height:76px;padding:4px}
+    .grid.month .ev{font-size:10.5px;padding:1px 3px;border-left-width:2px}
+    .grid.month .ev .t{display:none}
+    .list .dow{display:none}
+    .list .grid{grid-template-columns:1fr}
+    .list .grid .day{min-height:64px!important}
+    .list .day{border-right:0;display:flex;gap:10px;padding:10px 12px}
+    .list .day .num{flex:0 0 58px;flex-direction:column;justify-content:flex-start}
+    .list .day .evs{flex:1;min-width:0}
+    .list .day .ev{font-size:13.5px;padding:6px 8px}
+  }
+  .fab{display:none;position:fixed;right:16px;bottom:calc(150px + env(safe-area-inset-bottom));width:56px;height:56px;border-radius:50%;
+    background:var(--accent);color:#fff;font-size:30px;line-height:1;border:0;box-shadow:0 6px 18px rgba(47,111,237,.4);align-items:center;justify-content:center;z-index:41}
+  .guide{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:13px;line-height:1.6}
+  .guide{color:var(--ink)}
+  .guide .go{display:block;text-align:center;text-decoration:none;margin-top:10px;padding:12px;border-radius:12px;font-weight:700;color:#fff;background:linear-gradient(135deg,#7c5cd6,#5b3fc4)}
+  .guide b{font-size:15px;display:block;margin-bottom:4px}
+  .guide ol{margin:6px 0 0;padding-left:18px}
+  .guide .url{display:flex;gap:6px;margin-top:8px}
+  .guide .url input{font-size:12px;padding:6px 8px}
+  .guide .url button{padding:6px 10px;font-size:13px}
+  @media (max-width:680px){
+    .wrap{padding:calc(8px + env(safe-area-inset-top)) 12px calc(150px + env(safe-area-inset-bottom))}
+    header{position:sticky;top:0;z-index:30;background:var(--bg);padding:8px 0;margin-bottom:8px}
+    header .btn{padding:7px 10px;font-size:13px}
+    .toolbar{position:fixed;left:0;right:0;bottom:0;z-index:40;margin:0;border-radius:18px 18px 0 0;border-bottom:0;
+      padding:10px 12px calc(12px + env(safe-area-inset-bottom));box-shadow:0 -6px 24px rgba(15,23,42,.10);gap:8px}
+    .toolbar .nav{order:1}
+    .toolbar .range{order:2;flex:1;text-align:right}
+    #printBtn{display:none}
+    .seg button{padding:10px 0;font-size:15px}
+    .nav .btn{padding:10px 14px}
+    body.edit .fab{display:flex}
+    .baby-bar .legend{display:none}
+  }
+
+  /* ===== 마법 동화책 테마 ===== */
+  :root{ --accent:#7c5cd6; --accent-soft:#efe9ff; --gold:#f5c451; --today:#fff4cf; --radius:18px; --line:#e8e3f5; }
+  html,body{font-family:"Gowun Dodum","Noto Sans KR",system-ui,sans-serif}
+  body{background:linear-gradient(180deg,#1e1b4b 0%,#3b2a7a 45%,#6b4fa8 80%,#a98bd6 100%) fixed;min-height:100vh}
+  .sky{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+  .sky .star{position:absolute;color:#fff7d1;opacity:.85;animation:tw 3.2s ease-in-out infinite;text-shadow:0 0 6px rgba(255,236,170,.9)}
+  .sky .moon{position:absolute;top:28px;right:6%;width:84px;height:84px;border-radius:50%;
+    box-shadow:-18px 10px 0 0 #fde68a;transform:rotate(-15deg);filter:drop-shadow(0 0 18px rgba(253,230,138,.55))}
+  .sky .cloud{position:absolute;bottom:-20px;width:340px;height:110px;background:#fff;opacity:.13;border-radius:999px;filter:blur(2px)}
+  .sky .cloud::before,.sky .cloud::after{content:"";position:absolute;background:inherit;border-radius:50%}
+  .sky .cloud::before{width:150px;height:150px;left:40px;top:-60px}
+  .sky .cloud::after{width:110px;height:110px;left:170px;top:-40px}
+  @keyframes tw{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
+  @media (prefers-reduced-motion:reduce){.sky .star{animation:none}}
+  .wrap{position:relative;z-index:1}
+  h1,.modal-h h2,.range,.baby-bar .info b{font-family:"Jua","Gowun Dodum",sans-serif;font-weight:400;letter-spacing:0}
+  header h1{color:#fff;font-size:26px;text-shadow:0 2px 12px rgba(245,196,81,.55)}
+  header h1::before{content:"✨ ";}
+  .status{color:#ede9fe}
+  .toolbar,.baby-bar,.cal{border:2px solid rgba(245,196,81,.55);box-shadow:0 8px 28px rgba(20,10,60,.28)}
+  .cal{background:#fffdf7}
+  .dow div{background:#f6f1ff;font-family:"Jua",sans-serif;font-size:14px}
+  .day.out{background:#faf8ff}
+  .day.today{background:var(--today);box-shadow:inset 0 0 0 2px var(--gold)}
+  .day.today .num>span:first-child::after{content:" ⭐";font-size:11px}
+  .btn{border-radius:12px}
+  .btn.primary{background:linear-gradient(135deg,#7c5cd6,#5b3fc4);border-color:#5b3fc4}
+  .seg{border-radius:12px}
+  .seg button.on{background:linear-gradient(135deg,#7c5cd6,#5b3fc4)}
+  .ev{border-radius:8px}
+  .modal{border:2px solid rgba(245,196,81,.6);border-radius:20px}
+  .backdrop{background:rgba(20,10,60,.55)}
+  .fab{background:linear-gradient(135deg,#f5c451,#e9a826);color:#3b2a7a;box-shadow:0 6px 18px rgba(245,196,81,.55)}
+  .editing-badge{background:#fff4cf;color:#7a5200}
+  @media (max-width:680px){ header{background:transparent} header h1{font-size:21px} .sky .moon{width:60px;height:60px;top:14px;right:16px} }
+  @media print{
+    body{background:#fff!important} .sky{display:none}
+    header h1{color:#000;text-shadow:none}
+    .toolbar,.status,#editBtn,#pwBtn,#dlBtn,.baby-bar,.empty-note,.toast{display:none!important}
+    .wrap{max-width:none;padding:0}
+    .cal{border-color:#999}
+    .day{min-height:90px!important}
+  }
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true"><span class="star" style="left:8%;top:12%;font-size:14px;animation-delay:0s">★</span><span class="star" style="left:18%;top:30%;font-size:10px;animation-delay:0.6s">✦</span><span class="star" style="left:27%;top:8%;font-size:16px;animation-delay:1.2s">✦</span><span class="star" style="left:40%;top:22%;font-size:9px;animation-delay:0.3s">★</span><span class="star" style="left:52%;top:6%;font-size:12px;animation-delay:2s">✦</span><span class="star" style="left:61%;top:34%;font-size:10px;animation-delay:1.5s">✦</span><span class="star" style="left:70%;top:14%;font-size:13px;animation-delay:0.9s">★</span><span class="star" style="left:84%;top:40%;font-size:9px;animation-delay:2.4s">✦</span><span class="star" style="left:92%;top:20%;font-size:11px;animation-delay:0.4s">✦</span><span class="star" style="left:12%;top:55%;font-size:10px;animation-delay:1.8s">★</span><span class="star" style="left:33%;top:48%;font-size:8px;animation-delay:2.7s">✦</span><span class="star" style="left:47%;top:62%;font-size:12px;animation-delay:0.2s">✦</span><span class="star" style="left:58%;top:52%;font-size:9px;animation-delay:1.1s">★</span><span class="star" style="left:76%;top:58%;font-size:14px;animation-delay:2.1s">✦</span><span class="star" style="left:88%;top:70%;font-size:10px;animation-delay:0.7s">✦</span><span class="star" style="left:6%;top:80%;font-size:12px;animation-delay:1.4s">★</span><span class="star" style="left:22%;top:72%;font-size:9px;animation-delay:2.9s">✦</span><span class="star" style="left:66%;top:78%;font-size:11px;animation-delay:0.5s">✦</span><span class="star" style="left:95%;top:88%;font-size:9px;animation-delay:1.9s">★</span><span class="star" style="left:40%;top:86%;font-size:12px;animation-delay:2.3s">✦</span><div class="moon"></div><div class="cloud" style="left:-60px"></div><div class="cloud" style="right:-80px;bottom:-40px;transform:scale(1.3)"></div></div>
+<div class="wrap">
+  <header>
+    <div class="hl">
+      <button class="btn" id="dlBtn" style="display:none">📲 앱 설치</button>
+      <h1>담이 전용 캘린더<span class="editing-badge">편집 중</span></h1>
+    </div>
+    <div class="hl">
+      <button class="btn" id="pwBtn" style="display:none">비밀번호 변경</button>
+      <button class="btn" id="editBtn">편집하기</button>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="nav">
+      <button class="btn" id="prev" aria-label="이전">◀</button>
+      <button class="btn" id="next" aria-label="다음">▶</button>
+      <button class="btn" id="today">오늘</button>
+    </div>
+    <div class="range" id="range"></div>
+    <div class="spacer"></div>
+    <div class="seg" id="views">
+      <button data-v="week">주간</button>
+      <button data-v="two">2주간</button>
+      <button data-v="month">월간</button>
+    </div>
+    <button class="btn" id="printBtn">출력</button>
+  </div>
+  <div class="baby-bar">
+    <div class="info" id="babyInfo">담이 정보를 불러오는 중…</div>
+    <label class="toggle"><input type="checkbox" id="showAuto" checked> 육아·지원금 일정 표시</label>
+    <button class="btn" id="calBtn" style="display:none">📅 폰 캘린더</button>
+    <button class="btn" id="babyBtn">담이 정보</button>
+    <div class="legend" style="width:100%">
+      <span style="--c:#dc2626"><i></i>신청 기한</span>
+      <span style="--c:#16a34a"><i></i>지원금·급여</span>
+      <span style="--c:#2563eb"><i></i>건강검진</span>
+      <span style="--c:#9333ea"><i></i>예방접종</span>
+      <span style="--c:#d97706"><i></i>휴가·직장</span>
+      <span style="--c:#db2777"><i></i>담이 기념일</span>
+      <span style="--c:#0d9488"><i></i>혜택·이벤트</span>
+    </div>
+  </div>
+  <div class="status" id="status">불러오는 중…</div>
+
+  <div class="cal" id="cal">
+    <div class="dow" id="dow"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</div>
+
+<!-- 일정 추가/수정 -->
+<div class="backdrop" id="evModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="evTitle">
+    <div class="modal-h"><h2 id="evTitle">일정 추가</h2><button class="x" data-close>닫기</button></div>
+    <form id="evForm">
+      <div class="modal-b">
+        <div class="field"><label>제목 <span class="req">*</span></label>
+          <input id="fTitle" maxlength="80" required placeholder="예: 주간 회의"></div>
+        <div class="field"><label>날짜</label><input type="date" id="fDate" required></div>
+        <div class="field"><label>시간 (선택)</label>
+          <div class="row">
+            <select id="fAmpm"><option value="">시간 없음</option><option value="AM">오전</option><option value="PM">오후</option></select>
+            <select id="fHour"></select>
+            <select id="fMin"></select>
+          </div>
+        </div>
+        <div class="field"><label>메모 (선택)</label><textarea id="fMemo" maxlength="500"></textarea></div>
+        <div class="field"><label>관련 링크 (선택)</label><textarea id="fLinks" rows="2" placeholder="https://… (한 줄에 하나씩)" style="min-height:50px"></textarea></div>
+        <div class="field"><label>작성자 이름</label><input id="fAuthor" maxlength="30" placeholder="이름"></div>
+        <div class="err" id="fErr"></div>
+      </div>
+      <div class="modal-f">
+        <button type="button" class="btn danger left" id="delBtn">삭제</button>
+        <button type="button" class="btn" data-close>취소</button>
+        <button type="submit" class="btn primary" id="saveBtn">저장</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- 일정 보기 -->
+<div class="backdrop" id="viewModal">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-h"><h2 id="vTitle"></h2><button class="x" data-close>닫기</button></div>
+    <div class="modal-b detail">
+      <p><span class="lbl">날짜</span><span id="vDate"></span></p>
+      <p><span class="lbl">작성자</span><span id="vAuthor"></span></p>
+      <p id="vMemoWrap"><span class="lbl">메모</span><span id="vMemo" style="white-space:pre-wrap"></span></p>
+      <div id="vLinksWrap"><span class="lbl" style="color:var(--muted);font-size:13px">관련 링크</span><div id="vLinks" class="links"></div></div>
+      <div id="vSrcWrap" style="margin-top:12px"><span class="lbl" style="color:var(--muted);font-size:13px">📄 정보 출처</span><div id="vSrc" class="links src"></div>
+        <div class="hint">2026년 11월에 확인한 자료예요. 신청 전에 공식 기관에서 한 번 더 확인해 주세요.</div></div>
+    </div>
+    <div class="modal-f"><button class="btn" data-close>닫기</button></div>
+  </div>
+</div>
+
+<!-- 담이 정보 -->
+<div class="backdrop" id="babyModal">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-h"><h2>담이 정보</h2><button class="x" data-close>닫기</button></div>
+    <form id="babyForm">
+      <div class="modal-b">
+        <div class="field"><label>상태</label>
+          <select id="bBorn"><option value="due">출산 예정이에요</option><option value="born">태어났어요</option></select></div>
+        <div class="field"><label id="bDateLbl">출산 예정일</label><input type="date" id="bDate" required>
+          <div class="hint">이 날짜를 기준으로 지원금 신청 기한·검진·접종 일정이 자동으로 표시돼요. 담이가 태어나면 실제 생일로 바꿔 주세요.</div></div>
+        <div class="field"><label>지역별 지원 표시</label>
+          <div class="checks">
+            <label><input type="checkbox" value="chungbuk"> 충북·청주</label>
+            <label><input type="checkbox" value="seoul"> 서울</label>
+            <label><input type="checkbox" value="gyeonggi"> 경기</label>
+          </div></div>
+        <div class="field"><label>출생 순서</label>
+          <select id="bOrder"><option value="1">첫째</option><option value="2">둘째 이상</option></select></div>
+        <div class="err" id="bErr"></div>
+      </div>
+      <div class="modal-f">
+        <button type="button" class="btn" data-close>취소</button>
+        <button type="submit" class="btn primary" id="bSave">저장</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- 자동 일정 보기 -->
+<div class="backdrop" id="autoModal">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-h"><h2 id="aTitle"></h2><button class="x" data-close>닫기</button></div>
+    <div class="modal-b detail">
+      <span class="tag" id="aTag"></span>
+      <p><span class="lbl">날짜</span><span id="aDate"></span></p>
+      <p><span class="lbl">내용</span><span id="aDesc" style="white-space:pre-wrap"></span></p>
+      <p id="aWhereWrap"><span class="lbl">신청·문의</span><span id="aWhere"></span></p>
+      <p class="warn" id="aWarn"></p>
+    </div>
+    <div class="modal-f"><button class="btn" data-close>닫기</button></div>
+  </div>
+</div>
+
+<!-- 편집 비밀번호 입력 -->
+<div class="backdrop" id="lockModal">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-h"><h2>편집 비밀번호</h2><button class="x" data-close>닫기</button></div>
+    <form id="lockForm">
+      <div class="modal-b">
+        <div class="field"><label>비밀번호를 입력하세요</label><input type="password" id="lockPw" autocomplete="current-password"></div>
+        <div class="err" id="lockErr"></div>
+      </div>
+      <div class="modal-f"><button type="button" class="btn" data-close>취소</button><button type="submit" class="btn primary">확인</button></div>
+    </form>
+  </div>
+</div>
+
+<!-- 비밀번호 변경 -->
+<div class="backdrop" id="pwModal">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-h"><h2>비밀번호 변경</h2><button class="x" data-close>닫기</button></div>
+    <form id="pwForm">
+      <div class="modal-b">
+        <div class="field"><label>새 편집 비밀번호</label><input type="password" id="pwNew" autocomplete="new-password"></div>
+        <div class="field"><label>새 편집 비밀번호 확인</label><input type="password" id="pwNew2" autocomplete="new-password"></div>
+        <div class="hint">비밀번호를 바꾸면 다른 편집자도 새 비밀번호로 다시 들어와야 해요.</div>
+        <div class="err" id="pwErr"></div>
+      </div>
+      <div class="modal-f"><button type="button" class="btn" data-close>취소</button><button type="submit" class="btn primary">저장</button></div>
+    </form>
+  </div>
+</div>
+
+<!-- 파일 다운받기 -->
+<div class="backdrop" id="dlModal">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-h"><h2>📲 앱 설치</h2><button class="x" data-close>닫기</button></div>
+    <div class="modal-b">
+      <div class="seg os-seg" id="osSeg" style="width:100%;margin-bottom:12px">
+        <button type="button" data-os="android" style="flex:1">🤖 안드로이드</button>
+        <button type="button" data-os="ios" style="flex:1">🍎 아이폰</button>
+      </div>
+      <div class="guide" id="osAndroid">
+        <button type="button" class="go" id="installNow" style="width:100%;border:0;font:inherit;font-weight:700">📲 지금 설치하기</button>
+        <ol>
+          <li><b style="display:inline;font-size:13px">크롬</b>으로 열어요. (카카오톡·Claude 앱 안에서는 설치가 안 돼요 → 아래 「브라우저에서 열기」)</li>
+          <li>오른쪽 위 <b style="display:inline;font-size:13px">⋮</b> → 「<b style="display:inline;font-size:13px">앱 설치</b>」 또는 「홈 화면에 추가」 → 「설치」</li>
+          <li><b style="display:inline;font-size:13px">삼성 인터넷</b>이라면: 아래 ≡ → 「현재 페이지 추가」 → 「홈 화면」</li>
+          <li>홈 화면에 생긴 <b style="display:inline;font-size:13px">「담」 아이콘</b>을 누르면 앱으로 열려요.</li>
+        </ol>
+      </div>
+      <div class="guide" id="osIos" style="display:none">
+        <ol>
+          <li>반드시 <b style="display:inline;font-size:13px">사파리</b>로 열어요. (카카오톡·Claude 앱 안이면 아래 「브라우저에서 열기」 → 사파리)</li>
+          <li>화면 아래 <b style="display:inline;font-size:13px">공유 버튼(□↑)</b>을 눌러요.</li>
+          <li>목록을 올려 「<b style="display:inline;font-size:13px">홈 화면에 추가</b>」 → 오른쪽 위 「추가」</li>
+          <li>홈 화면의 <b style="display:inline;font-size:13px">「담」 아이콘</b>을 누르면 앱으로 열려요.</li>
+        </ol>
+        <div class="hint">아이폰은 설치 버튼이 따로 없어서 위 방법으로만 설치할 수 있어요.</div>
+      </div>
+      <div class="guide" id="calSync">
+        <b>📅 폰 캘린더 앱에 담이 일정 넣기</b>
+        삼성·구글·아이폰 기본 캘린더에 담이 일정이 함께 떠요. 여기서 일정을 바꾸면 폰 캘린더에도 자동으로 반영돼요(보통 몇 시간~하루 걸려요).
+        <div id="syncAndroid">
+          <a class="go" id="gcalLink" href="#" target="_blank" rel="noopener">구글 캘린더에 추가 (안드로이드)</a>
+          <div class="hint">구글 계정으로 로그인 → 「추가」. 삼성 캘린더는 설정 → 캘린더 관리에서 구글 계정 캘린더를 켜면 같이 보여요.</div>
+        </div>
+        <div id="syncIos" style="display:none">
+          <a class="go" id="icalLink" href="#">아이폰 캘린더에 구독하기</a>
+          <div class="hint">「구독」 → 「추가」를 누르면 끝이에요. 안 되면 설정 → 캘린더 → 계정 → 계정 추가 → 기타 → 「구독 캘린더 추가」에 아래 주소를 넣어 주세요.</div>
+        </div>
+        <div class="url"><input id="feedUrl" readonly><button type="button" class="btn" id="copyFeed">복사</button></div>
+      </div>
+      <div class="guide" id="calSyncOff" style="display:none">
+        <b>📅 폰 캘린더 연동</b>
+        삼성·구글·아이폰 캘린더 연동은 Cloudflare에 올린 담이 캘린더 앱에서 쓸 수 있어요.
+      </div>
+      <div class="guide">
+        <a class="go" id="openBrowser" href="https://claude.ai/artifact/LshAV7BPZKgPywRahBwyUS" target="_blank" rel="noopener" style="margin-top:0">🌐 브라우저에서 열기</a>
+        <div class="url"><input id="appUrl" readonly value="https://claude.ai/artifact/LshAV7BPZKgPywRahBwyUS"><button type="button" class="btn" id="copyUrl">복사</button></div>
+        <div class="hint" id="dlNote">버튼이 안 열리면 주소를 복사해서 브라우저 주소창에 붙여 넣어 주세요.</div>
+      </div>
+      <div class="err" id="dlErr"></div>
+    </div>
+  </div>
+</div>
+
+<button class="fab" id="fab" aria-label="일정 추가">+</button>
+<div class="toast" id="toast"></div>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const DOW = ['월','화','수','목','금','토','일'];
+  const pad = n => String(n).padStart(2,'0');
+  const key = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+  const parseKey = k => { const [y,m,d]=k.split('-').map(Number); return new Date(y,m-1,d); };
+  const addDays = (d,n) => { const x=new Date(d); x.setDate(x.getDate()+n); return x; };
+  const monday = d => { const x=new Date(d.getFullYear(),d.getMonth(),d.getDate()); const w=(x.getDay()+6)%7; return addDays(x,-w); };
+
+  let view = 'month';
+  try { view = localStorage.getItem('cal.view') || (window.innerWidth<=680 ? 'week' : 'month'); } catch(e){ if(window.innerWidth<=680) view='week'; }
+  let anchor = new Date();
+  let events = [];           // {id, title, date, ampm, hour, min, memo, author}
+  let editMode = false;
+  let canWrite = null;       // null = unknown
+  let db = null, col = null, user = null;
+  let editingId = null;
+
+  // ---------- helpers ----------
+  function toast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove('show'),2400); }
+  function colorFor(name){
+    const palette=['#2f6fed','#16a34a','#d97706','#9333ea','#db2777','#0891b2','#dc2626','#4f46e5','#65a30d','#0d9488'];
+    let h=0; for(const ch of (name||'?')) h=(h*31+ch.charCodeAt(0))>>>0;
+    return palette[h%palette.length];
+  }
+  function timeLabel(e){
+    if(!e.ampm) return '';
+    return `${e.ampm==='AM'?'오전':'오후'} ${e.hour}:${pad(e.min||0)}`;
+  }
+  function sortVal(e){
+    if(!e.ampm) return -1;
+    let h=Number(e.hour)%12; if(e.ampm==='PM') h+=12;
+    return h*60+Number(e.min||0);
+  }
+  function clean(raw,id){
+    const s=v=>typeof v==='string'?v:'';
+    const date=s(raw.date);
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(date)) return null;
+    const ampm = raw.ampm==='AM'||raw.ampm==='PM' ? raw.ampm : '';
+    return { id, title:s(raw.title).slice(0,80)||'(제목 없음)', date, ampm,
+      hour: Math.min(12,Math.max(1,Number(raw.hour)||12)), min: Math.min(59,Math.max(0,Number(raw.min)||0)),
+      memo:s(raw.memo).slice(0,500), author:s(raw.author).slice(0,30),
+      cat: ['deadline','money','check','vax','work','day','shop'].includes(raw.cat) ? raw.cat : '',
+      links: cleanLinks(raw.links), sources: cleanLinks(raw.sources) };
+  }
+  function cleanLinks(a){
+    if(!Array.isArray(a)) return [];
+    return a.slice(0,5).map(x=>({t:(typeof x?.t==='string'?x.t:'').slice(0,40), u:(typeof x?.u==='string'?x.u:'').slice(0,300)}))
+      .filter(x=>/^https?:\/\/[^\s]+$/i.test(x.u));
+  }
+  function linksFromText(t, prev){
+    const old=new Map((prev||[]).map(x=>[x.u,x.t]));
+    return t.split(/\n+/).map(x=>x.trim()).filter(x=>/^https?:\/\/\S+$/i.test(x)).slice(0,5)
+      .map(u=>({t: old.get(u) || (()=>{ try{ return new URL(u).hostname.replace(/^www\./,''); }catch(e){ return '관련 링크'; } })(), u}));
+  }
+  function renderLinks(box, links){
+    box.innerHTML='';
+    (links||[]).forEach(l=>{ const a=document.createElement('a'); a.href=l.u; a.target='_blank'; a.rel='noopener noreferrer'; a.textContent=(box.classList.contains('src')?'📄 ':'🔗 ')+(l.t||l.u); box.appendChild(a); });
+  }
+
+  // ---------- 담이 육아·지원 일정 (자동 계산) ----------
+  let baby = null;            // {date, born, regions:[], order}
+  let showAuto = true;
+  try { showAuto = localStorage.getItem('cal.auto') !== '0'; } catch(e){}
+  const CAT = {
+    deadline:{c:'#dc2626', n:'신청 기한'}, money:{c:'#16a34a', n:'지원금·급여'},
+    check:{c:'#2563eb', n:'건강검진'}, vax:{c:'#9333ea', n:'예방접종'},
+    work:{c:'#d97706', n:'휴가·직장'}, day:{c:'#db2777', n:'담이 기념일'}, shop:{c:'#0d9488', n:'혜택·이벤트'}
+  };
+  function addMonths(d,n){ const y=d.getFullYear(), m=d.getMonth()+n, day=d.getDate();
+    const last=new Date(y,m+1,0).getDate(); return new Date(y,m,Math.min(day,last)); }
+  // 'N~M개월' 기간의 마지막 날 = (M+1)개월 되는 날의 전날
+  const monthEnd = (B,M) => addDays(addMonths(B,M+1),-1);
+
+  function buildMilestones(){
+    if(!baby || baby.imported || !/^\d{4}-\d{2}-\d{2}$/.test(baby.date||'')) return [];
+    const B=parseKey(baby.date), born=!!baby.born, R=new Set(baby.regions||[]);
+    const second = baby.order==='2';
+    const out=[];
+    const add=(d,cat,title,desc,where,extra={})=>out.push({auto:true,id:'auto-'+out.length,date:key(d),cat,title,desc,where:where||'',...extra});
+    const winTitle=(name,a,b)=>`${name} (${a}~${b})`;
+
+    // --- 출산 전 (예정일 기준) ---
+    if(!born){
+      add(addDays(B,-50),'work','배우자 출산전후휴가 사용 가능',
+        '배우자는 출산예정일 50일 전부터 출산 후 120일까지 유급휴가 20일(근무일 기준)을 쓸 수 있어요. 3번까지 나눠 쓸 수 있어요. (2026.9.18 시행)','회사 인사팀 · 급여 신청은 고용24');
+      add(addDays(B,-44),'work','출산전후휴가 시작 가능 (최대 44일 전)',
+        '출산전후휴가는 총 90일이고, 출산 후 기간이 45일 이상 남아야 해서 예정일 기준 최대 44일 전부터 쓸 수 있어요. 급여 상한은 30일 기준 220만원(2026년).','회사 인사팀 · 고용24');
+      add(addDays(B,-40),'deadline','산모·신생아 건강관리(산후도우미) 신청 시작',
+        '출산 예정 40일 전부터 출산 후 60일까지 신청할 수 있어요. 소득 기준이 있고 예외 지원도 있어요.','주소지 보건소 · 복지로');
+      add(B,'day','🎂 담이 출산 예정일','예정일이에요. 담이가 태어나면 「담이 정보」에서 실제 생일로 바꿔 주세요. 아래 일정이 생일 기준으로 다시 계산돼요.','');
+    } else {
+      add(B,'day','🎂 담이 생일','담이가 태어난 날이에요.','');
+    }
+
+    // --- 출생 직후 ---
+    add(B,'vax','B형간염 1차 접종','출생 직후 접종해요. 다음은 생후 1개월(2차), 6개월(3차).','분만 병원');
+    add(addDays(B,14),'check',winTitle('영유아검진 1차 시작','생후 14','35일'),'국민건강보험공단 영유아 건강검진 1차(무료). 생후 14~35일 사이에 받아요.','검진기관 · The건강보험 앱');
+    add(addDays(B,35),'deadline','영유아검진 1차 마지막 날','1차 검진 기간(생후 14~35일)이 끝나는 날이에요.','검진기관');
+    add(addDays(B,28),'deadline','BCG(결핵) 접종 권장 기한','생후 4주 이내 접종을 권장해요. 무료는 피내용만이고, 위탁의료기관에서 맞아야 해요.','위탁의료기관 · 보건소');
+    add(addDays(addMonths(B,1),-1),'deadline','출생신고 기한 (1개월)',
+      '출생 후 1개월 이내에 신고해야 해요. 늦으면 5만원 이하 과태료가 부과될 수 있어요. 출생신고 때 「행복출산 원스톱」으로 부모급여·아동수당·첫만남이용권을 한 번에 신청하면 편해요.',
+      '주민센터 · 대법원 전자가족관계등록시스템 · 정부24');
+    add(addMonths(B,1),'vax','B형간염 2차 접종','생후 1개월. BCG와 같이 맞아도 돼요.','소아청소년과');
+    add(addDays(B,59),'deadline','부모급여·아동수당 소급 마감 (60일)',
+      '출생일 포함 60일 이내에 신청하면 태어난 달부터 받아요. 넘기면 신청한 달부터만 나와요.\n· 부모급여: 0세 월 100만원\n· 아동수당: 월 10만원 이상(지역별 차등)\n· 첫만남이용권: '+(second?'300만원':'200만원')+'(국민행복카드)도 함께 신청하세요.',
+      '정부24 · 복지로 · 주민센터 (문의 129)');
+    add(addDays(B,59),'deadline','산모·신생아 건강관리 신청 마감','출산 후 60일까지 신청할 수 있어요. 아직 신청 안 했다면 오늘이 마지막이에요.','주소지 보건소 · 복지로');
+    add(addMonths(B,2),'vax','2개월 접종 (DTaP·IPV·Hib·PCV·로타 1차)','생후 2개월 기본 접종이에요. 로타바이러스는 1차 접종 시기가 정해져 있어 미루지 마세요.','소아청소년과');
+    if(born) add(addDays(B,119),'deadline','배우자 출산전후휴가 사용 마지막 날','출산일로부터 120일이 지나면 남은 휴가는 쓸 수 없어요.','회사 인사팀 · 고용24');
+    else add(addDays(B,119),'work','배우자 출산전후휴가 사용 기한 (예정일 기준)','실제 생일 기준 120일이 마감이에요. 담이가 태어나면 날짜가 다시 계산돼요.','회사 인사팀');
+    add(addMonths(B,4),'vax','4개월 접종 (DTaP·IPV·Hib·PCV·로타 2차)','','소아청소년과');
+    add(addMonths(B,4),'check',winTitle('영유아검진 2차 시작','4','6개월'),'신체계측·문진·건강교육.','검진기관');
+    add(monthEnd(B,6),'deadline','영유아검진 2차 마지막 날','','검진기관');
+    add(addMonths(B,6),'vax','6개월 접종 (DTaP·IPV·Hib·PCV 3차, B형간염 3차)','로타텍은 3차까지 맞아요. 생후 6개월부터 매년 가을 인플루엔자 접종도 받을 수 있어요.','소아청소년과');
+
+    // --- 지역 ---
+    if(R.has('seoul')) add(addDays(B,179),'deadline','서울형 산후조리경비 신청 마감 (180일)',
+      '서울 거주 산모·서울 출생신고 시 '+(second?'둘째 120만원(셋째 이상 150만원)':'첫째 100만원')+' 바우처. 출산일로부터 180일 이내, 산모 본인만 신청할 수 있어요. 2026.7.1부터 신청일 기준 서울 거주 90일 요건이 있어요.','탄생육아 몽땅정보통 (온라인)');
+    if(R.has('chungbuk')){
+      add(addDays(addMonths(B,6),-1),'deadline','충북 출산육아수당 1회차 신청 (6개월 이내)',
+        '충북 출산육아수당은 6세까지 총 1,000만원을 나눠 받아요. 1회차는 300만원이고, 출생일 기준 부모 중 1명이 충북에 6개월 이상 주민등록이 있어야 해요. 이후 회차는 생일마다 지급돼요. 신청 기한은 이전 지침 기준이니 주민센터에서 꼭 확인하세요.','주소지 동 행정복지센터 · 정부24');
+      add(addDays(B,7),'money','충북 임산부 산후조리비 50만원 확인','충북에 출생등록한 산모에게 50만원(다태아 100만원)을 줘요. 신청 기한·조건은 주민센터에 확인하세요.','동 행정복지센터');
+      add(addMonths(B,6),'money','청주시 시간제보육 이용 가능 (6개월부터)','부모급여(현금)를 받으면 생후 6~36개월에 시간당 5,000원(부모 부담 2,000원)으로 시간제보육을 쓸 수 있어요. 60시간.','아이사랑 · 주민센터');
+    }
+    if(R.has('gyeonggi')) add(B,'money','경기: 시·군 자체 출산지원금 확인',
+      '경기도 산후조리비(50만원)는 2026.9.30 신청분까지만 지원하고 종료됐어요. 하남·시흥처럼 시·군이 자체로 주는 산후조리비·출생축하금이 있으니 사는 시·군에 확인하세요.','시·군청 홈페이지 · 동 행정복지센터');
+
+    // --- 돌 이후 ---
+    add(addMonths(B,9),'check',winTitle('영유아검진 3차 시작','9','12개월'),'이번부터 발달선별검사(K-DST)가 들어가요.','검진기관');
+    add(monthEnd(B,12),'deadline','영유아검진 3차 마지막 날','','검진기관');
+    add(addMonths(B,12),'day','🎂 담이 첫 돌','','');
+    add(addMonths(B,12),'money','부모급여 변경: 월 50만원 (만 1세)','만 1세부터 부모급여가 월 100만원 → 50만원으로 바뀌어요. 어린이집을 다니면 보육료 바우처로 대신 지원돼요.','복지로');
+    add(addMonths(B,12),'vax',winTitle('돌 접종','12','15개월'),'MMR 1차, 수두, A형간염 1차, Hib·폐렴구균 4차, 일본뇌염.','소아청소년과');
+    add(addMonths(B,15),'vax',winTitle('DTaP 4차 접종','15','18개월'),'A형간염 2차는 1차 접종 6~12개월 뒤.','소아청소년과');
+    add(addMonths(B,18),'check',winTitle('영유아검진 4차 시작','18','24개월'),'첫 구강검진도 이때부터(18~29개월) 받을 수 있어요.','검진기관 · 치과');
+    add(monthEnd(B,24),'deadline','영유아검진 4차 마지막 날','구강검진은 29개월까지예요.','검진기관');
+    add(addMonths(B,22),'money','첫만남이용권 잔액 확인','사용기한이 2개월 남았어요. 남은 포인트를 확인하세요.','국민행복카드 앱');
+    add(addDays(addMonths(B,24),-1),'deadline','첫만남이용권 사용기한 만료','2024년 이후 출생아는 출생일로부터 2년까지 쓸 수 있어요. 지나면 남은 포인트는 사라져요.','국민행복카드');
+    add(addMonths(B,24),'money','부모급여 종료 (만 2세)','부모급여는 만 2세 전까지예요. 집에서 키우면 가정양육수당, 어린이집은 보육료 지원으로 넘어가요. 아동수당은 계속 나와요.','복지로 · 주민센터');
+    add(addMonths(B,24),'vax','일본뇌염 추가 접종 (24개월~)','백신 종류(사백신·생백신)에 따라 차수가 달라요.','소아청소년과');
+    add(addMonths(B,30),'check',winTitle('영유아검진 5차','30','36개월'),'구강검진 2차는 30~41개월.','검진기관');
+    add(addMonths(B,42),'check',winTitle('영유아검진 6차','42','48개월'),'구강검진 3차는 42~53개월.','검진기관');
+    add(addMonths(B,48),'vax','만 4~6세 추가 접종 시작','DTaP 5차, IPV 4차, MMR 2차.','소아청소년과');
+    add(addMonths(B,54),'check',winTitle('영유아검진 7차','54','60개월'),'구강검진 4차는 54~65개월.','검진기관');
+    add(addMonths(B,66),'check',winTitle('영유아검진 8차 (마지막)','66','71개월'),'초등학교 입학 전 마지막 영유아검진이에요.','검진기관');
+
+    if(!born) out.forEach(e=>{ if(e.cat!=='work' && !/예정일/.test(e.title)) e.estimated=true; });
+    return out;
+  }
+  let milestones=[];
+  function refreshBaby(){
+    milestones = buildMilestones();
+    const info=$('babyInfo');
+    if(!baby || !baby.date){
+      info.innerHTML='';
+      const b=document.createElement('b'); b.textContent='담이 출산 예정일을 입력해 주세요';
+      const s=document.createElement('small'); s.textContent='「담이 정보」에 날짜를 넣으면 지원금 신청 기한, 검진, 접종 일정이 자동으로 표시돼요.';
+      info.append(b,s); return;
+    }
+    const B=parseKey(baby.date), t=new Date(); t.setHours(0,0,0,0);
+    const diff=Math.round((B-t)/864e5);
+    let line;
+    if(!baby.born) line = diff>0 ? `출산 예정일까지 D-${diff}` : diff===0 ? '오늘이 출산 예정일이에요' : `예정일이 ${-diff}일 지났어요 · 태어났다면 생일로 바꿔 주세요`;
+    else line = `태어난 지 ${-diff+1}일째`;
+    const next = milestones.concat(events).filter(m=>m.cat==='deadline' && parseKey(m.date)>=t).sort((a,b)=>a.date.localeCompare(b.date))[0];
+    info.innerHTML='';
+    const b=document.createElement('b'); b.textContent=`담이 · ${line}`;
+    const s=document.createElement('small');
+    if(next){ const nd=parseKey(next.date); const dd=Math.round((nd-t)/864e5);
+      s.textContent=`다음 신청 기한: ${next.title} — ${nd.getMonth()+1}월 ${nd.getDate()}일${dd===0?' (오늘)':` (D-${dd})`}`; }
+    else s.textContent='다가오는 신청 기한이 없어요.';
+    info.append(b,s);
+  }
+
+  // ---------- range ----------
+  function range(){
+    if(view==='week'){ const s=monday(anchor); return {start:s, days:7}; }
+    if(view==='two'){ const s=monday(anchor); return {start:s, days:14}; }
+    const first=new Date(anchor.getFullYear(),anchor.getMonth(),1);
+    const s=monday(first);
+    const last=new Date(anchor.getFullYear(),anchor.getMonth()+1,0);
+    const e=addDays(monday(last),6);
+    return {start:s, days:Math.round((e-s)/864e5)+1};
+  }
+  function rangeLabel(r){
+    if(view==='month') return `${anchor.getFullYear()}년 ${anchor.getMonth()+1}월`;
+    const e=addDays(r.start,r.days-1);
+    const f=d=>`${d.getMonth()+1}월 ${d.getDate()}일`;
+    const y = r.start.getFullYear()===e.getFullYear() ? `${r.start.getFullYear()}년 ` : '';
+    return `${y}${f(r.start)} – ${r.start.getFullYear()!==e.getFullYear()?e.getFullYear()+'년 ':''}${f(e)}`;
+  }
+
+  // ---------- render ----------
+  function render(){
+    document.querySelectorAll('#views button').forEach(b=>b.classList.toggle('on',b.dataset.v===view));
+    $('cal').classList.toggle('list', view!=='month');
+    const r=range();
+    $('range').textContent=rangeLabel(r);
+    $('dow').innerHTML=DOW.map((d,i)=>`<div class="${i===5?'sat':i===6?'sun':''}">${d}</div>`).join('');
+
+    const byDate={};
+    for(const e of events){ (byDate[e.date] ||= []).push(e); }
+    if(showAuto) for(const e of milestones){ (byDate[e.date] ||= []).push(e); }
+    const sv=e=> e.auto ? (e.cat==='day'?-4:e.cat==='deadline'?-3:-2) : sortVal(e);
+    for(const k in byDate) byDate[k].sort((a,b)=>sv(a)-sv(b)||a.title.localeCompare(b.title));
+
+    const grid=$('grid'); grid.className='grid '+view; grid.innerHTML='';
+    const todayK=key(new Date());
+    const maxMonth = 4;
+    for(let i=0;i<r.days;i++){
+      const d=addDays(r.start,i), k=key(d), wd=(d.getDay()+6)%7;
+      const cell=document.createElement('div');
+      cell.className='day'+(wd===5?' sat':'')+(wd===6?' sun':'')+(k===todayK?' today':'')
+        +(view==='month'&&d.getMonth()!==anchor.getMonth()?' out':'');
+      cell.dataset.date=k;
+      const num=document.createElement('div'); num.className='num';
+      const n1=document.createElement('span'); n1.textContent=d.getDate();
+      num.appendChild(n1);
+      if(view!=='month'){ const n2=document.createElement('span'); n2.className='md'; n2.textContent=`${d.getMonth()+1}/${d.getDate()} (${DOW[wd]})`; num.appendChild(n2); }
+      cell.appendChild(num);
+      const box=document.createElement('div'); box.className='evs';
+      const list=byDate[k]||[];
+      const shown = view==='month' ? list.slice(0, list.length>maxMonth?maxMonth-1:maxMonth) : list;
+      for(const e of shown){
+        const b=document.createElement('button'); b.type='button';
+        if(e.auto){
+          b.className='ev auto'+(e.cat==='deadline'?' deadline':'');
+          b.style.setProperty('--c',CAT[e.cat].c);
+          b.textContent=(e.cat==='deadline'?'⏰ ':'')+e.title+(e.estimated?' (예정)':'');
+          b.title=CAT[e.cat].n+' · '+e.title;
+          b.addEventListener('click',ev=>{ ev.stopPropagation(); openAuto(e); });
+          box.appendChild(b); continue;
+        }
+        b.className='ev';
+        b.style.setProperty('--c', e.cat ? CAT[e.cat].c : colorFor(e.author));
+        if(e.cat==='deadline') b.classList.add('auto','deadline');
+        const tl=timeLabel(e);
+        if(tl){ const t=document.createElement('span'); t.className='t'; t.textContent=tl; b.appendChild(t); }
+        b.appendChild(document.createTextNode(e.title));
+        if(e.author){ const a=document.createElement('span'); a.className='a'; a.textContent=e.author; b.appendChild(a); }
+        b.title=(tl?tl+' ':'')+e.title+(e.author?` · ${e.author}`:'');
+        b.addEventListener('click',ev=>{ ev.stopPropagation(); openEvent(e); });
+        box.appendChild(b);
+      }
+      if(list.length>shown.length){
+        const m=document.createElement('button'); m.type='button'; m.className='more ev';
+        m.style.cssText='border:0;background:none';
+        m.textContent=`+${list.length-shown.length}개 더보기`;
+        m.addEventListener('click',ev=>{ ev.stopPropagation(); anchor=d; setView('week'); });
+        box.appendChild(m);
+      }
+      cell.appendChild(box);
+      cell.addEventListener('click',()=>{ if(editMode) openNew(k); });
+      grid.appendChild(cell);
+    }
+  }
+  function setView(v){ view=v; try{localStorage.setItem('cal.view',v);}catch(e){} render(); }
+
+  // ---------- modals ----------
+  function openModal(id){ $(id).classList.add('open'); }
+  function closeModals(){ document.querySelectorAll('.backdrop').forEach(m=>m.classList.remove('open')); }
+  document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',closeModals));
+  document.querySelectorAll('.backdrop').forEach(m=>m.addEventListener('click',e=>{ if(e.target===m) closeModals(); }));
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModals(); });
+
+  // time selects
+  $('fHour').innerHTML=Array.from({length:12},(_,i)=>`<option value="${i+1}">${i+1}시</option>`).join('');
+  $('fMin').innerHTML=[0,10,15,20,30,40,45,50].map(m=>`<option value="${m}">${pad(m)}분</option>`).join('');
+  function syncTime(){ const off=!$('fAmpm').value; $('fHour').disabled=off; $('fMin').disabled=off; }
+  $('fAmpm').addEventListener('change',syncTime);
+
+  let myName='';
+  try { myName = localStorage.getItem('cal.author') || ''; } catch(e){}
+
+  function openNew(dateK){
+    editingId=null;
+    $('evTitle').textContent='일정 추가';
+    $('fTitle').value=''; $('fDate').value=dateK; $('fAmpm').value='';
+    $('fHour').value='9'; $('fMin').value='0'; $('fMemo').value=''; $('fLinks').value='';
+    $('fAuthor').value=myName; $('fErr').textContent='';
+    $('delBtn').style.display='none';
+    syncTime(); openModal('evModal'); setTimeout(()=>$('fTitle').focus(),50);
+  }
+  function openEvent(e){
+    if(editMode){
+      editingId=e.id;
+      $('evTitle').textContent='일정 수정';
+      $('fTitle').value=e.title; $('fDate').value=e.date; $('fAmpm').value=e.ampm;
+      $('fHour').value=String(e.hour); $('fMin').value=String(e.min);
+      if(!$('fMin').value) $('fMin').value='0';
+      $('fMemo').value=e.memo; $('fLinks').value=(e.links||[]).map(x=>x.u).join('\n'); $('fAuthor').value=e.author; $('fErr').textContent='';
+      $('delBtn').style.display=''; $('delBtn').textContent='삭제'; $('delBtn').dataset.confirm='';
+      syncTime(); openModal('evModal');
+    } else {
+      $('vTitle').textContent=e.title;
+      const d=parseKey(e.date);
+      $('vDate').textContent=`${d.getFullYear()}년 ${d.getMonth()+1}월 ${d.getDate()}일 (${DOW[(d.getDay()+6)%7]})`+(e.ampm?' · '+timeLabel(e):'');
+      $('vAuthor').textContent=e.author||'—';
+      $('vMemo').textContent=e.memo; $('vMemoWrap').style.display=e.memo?'':'none';
+      renderLinks($('vLinks'), e.links); $('vLinksWrap').style.display=(e.links&&e.links.length)?'':'none';
+      renderLinks($('vSrc'), e.sources); $('vSrcWrap').style.display=(e.sources&&e.sources.length)?'':'none';
+      openModal('viewModal');
+    }
+  }
+
+  $('evForm').addEventListener('submit',async ev=>{
+    ev.preventDefault();
+    const title=$('fTitle').value.trim();
+    if(!title){ $('fErr').textContent='제목을 입력해 주세요.'; return; }
+    if(!$('fDate').value){ $('fErr').textContent='날짜를 선택해 주세요.'; return; }
+    if(!col){ $('fErr').textContent='저장소에 연결되지 않았어요. 잠시 후 다시 시도해 주세요.'; return; }
+    const author=$('fAuthor').value.trim();
+    const body={ title, date:$('fDate').value, ampm:$('fAmpm').value,
+      hour:Number($('fHour').value), min:Number($('fMin').value),
+      memo:$('fMemo').value.trim(), author, updatedAt:new Date().toISOString(),
+      links: linksFromText($('fLinks').value, editingId && (events.find(x=>x.id===editingId)||{}).links) };
+    const prev = editingId && events.find(x=>x.id===editingId); if(prev && prev.cat) body.cat=prev.cat; if(prev && prev.sources && prev.sources.length) body.sources=prev.sources;
+    if(author){ myName=author; try{localStorage.setItem('cal.author',author);}catch(e){} }
+    $('saveBtn').disabled=true;
+    try{
+      if(editingId) await col.doc(editingId).set(body);
+      else await col.add({...body, createdAt:body.updatedAt});
+      closeModals(); toast('저장했어요');
+    }catch(e){ $('fErr').textContent=errMsg(e); if(e&&e.code==='invalid_argument') setReadOnly(); }
+    finally{ $('saveBtn').disabled=false; }
+  });
+
+  $('delBtn').addEventListener('click',async()=>{
+    const b=$('delBtn');
+    if(!b.dataset.confirm){ b.dataset.confirm='1'; b.textContent='한 번 더 누르면 삭제'; return; }
+    try{ await col.doc(editingId).delete(); closeModals(); toast('삭제했어요'); }
+    catch(e){ $('fErr').textContent=errMsg(e); }
+  });
+
+  function errMsg(e){
+    const c=e&&e.code;
+    if(c==='bad_password'){ apiPw=''; try{localStorage.removeItem('cal.pw');}catch(_){} setEdit(false); return '편집 비밀번호가 바뀌었어요. 「편집하기」를 눌러 새 비밀번호를 입력해 주세요.'; }
+    if(c==='invalid_argument') return '편집 권한이 없어요. 캘린더 소유자에게 편집 권한을 요청해 주세요.';
+    if(c==='quota_exceeded') return '저장 공간이 가득 찼어요. 오래된 일정을 정리해 주세요.';
+    if(c==='resource_exhausted') return '요청이 많아요. 잠시 후 다시 시도해 주세요.';
+    return '저장하지 못했어요. 잠시 후 다시 시도해 주세요.';
+  }
+
+  // ---------- 자동 일정 / 담이 정보 ----------
+  function openAuto(e){
+    $('aTitle').textContent=e.title;
+    const tag=$('aTag'); tag.textContent=CAT[e.cat].n; tag.style.setProperty('--c',CAT[e.cat].c);
+    const d=parseKey(e.date);
+    $('aDate').textContent=`${d.getFullYear()}년 ${d.getMonth()+1}월 ${d.getDate()}일 (${DOW[(d.getDay()+6)%7]})`;
+    $('aDesc').textContent=e.desc||'—';
+    $('aWhere').textContent=e.where; $('aWhereWrap').style.display=e.where?'':'none';
+    $('aWarn').textContent=(e.estimated?'출산 예정일 기준으로 계산한 날짜예요. 담이가 태어나면 생일 기준으로 다시 계산돼요. ':'')
+      +'2026년 11월 기준 정보로 자동 계산한 날짜라 실제와 다를 수 있어요. 신청 전에 복지로·정부24·주민센터에서 꼭 확인하세요.';
+    openModal('autoModal');
+  }
+  $('showAuto').checked=showAuto;
+  $('showAuto').addEventListener('change',()=>{ showAuto=$('showAuto').checked; try{localStorage.setItem('cal.auto',showAuto?'1':'0');}catch(e){} render(); });
+
+  function syncBornLbl(){ $('bDateLbl').textContent = $('bBorn').value==='born' ? '담이 생일' : '출산 예정일'; }
+  $('bBorn').addEventListener('change',syncBornLbl);
+  const regionBoxes=()=>[...document.querySelectorAll('#babyModal .checks input')];
+  $('babyBtn').addEventListener('click',()=>{
+    const b=baby||{regions:['chungbuk','seoul','gyeonggi']};
+    $('bBorn').value=b.born?'born':'due'; $('bDate').value=b.date||'';
+    $('bOrder').value=b.order==='2'?'2':'1';
+    regionBoxes().forEach(x=>x.checked=(b.regions||[]).includes(x.value));
+    $('bErr').textContent=''; syncBornLbl();
+    const ro = canWrite===false;
+    $('bSave').disabled=ro; if(ro) $('bErr').textContent='보기 전용 권한이라 바꿀 수 없어요.';
+    openModal('babyModal');
+  });
+  $('babyForm').addEventListener('submit',async ev=>{
+    ev.preventDefault();
+    if(!$('bDate').value){ $('bErr').textContent='날짜를 입력해 주세요.'; return; }
+    if(!db){ $('bErr').textContent='저장소에 연결되지 않았어요.'; return; }
+    const body={ date:$('bDate').value, born:$('bBorn').value==='born', order:$('bOrder').value,
+      regions:regionBoxes().filter(x=>x.checked).map(x=>x.value), updatedAt:new Date().toISOString() };
+    if(baby && baby.imported){ body.imported=true; if(baby.date!==body.date) toast('날짜가 바뀌었어요. 등록된 육아 일정은 그대로라 다시 등록이 필요해요'); }
+    $('bSave').disabled=true;
+    try{ await db.doc('settings/baby').set(body); closeModals(); toast('담이 정보를 저장했어요'); }
+    catch(e){ $('bErr').textContent=errMsg(e); if(e&&e.code==='invalid_argument') setReadOnly(); }
+    finally{ $('bSave').disabled=false; }
+  });
+  function applyBaby(raw){
+    if(!raw){ baby=null; }
+    else {
+      const regions=Array.isArray(raw.regions)?raw.regions.filter(r=>['chungbuk','seoul','gyeonggi'].includes(r)):[];
+      baby={ date: typeof raw.date==='string'?raw.date:'', born: raw.born===true, order: raw.order==='2'?'2':'1', regions, imported: raw.imported===true };
+    }
+    refreshBaby(); render();
+  }
+
+  // ---------- edit mode ----------
+  function setEdit(on){
+    editMode=on; document.body.classList.toggle('edit',on);
+    $('editBtn').textContent= on ? '편집 완료' : '편집하기';
+    $('pwBtn').style.display = on && !offline ? '' : 'none';
+    $('editBtn').classList.toggle('primary',on);
+    if(on) toast('날짜를 누르면 일정을 추가하고, 일정을 누르면 수정할 수 있어요');
+  }
+  function setReadOnly(){
+    canWrite=false; setEdit(false);
+    $('editBtn').disabled=true; $('editBtn').title='보기 전용 권한이에요';
+  }
+  // 편집 비밀번호 (기본 123) — 편의용 잠금이에요. 실제 쓰기 권한은 공유 설정이 정해요.
+  const DEFAULT_HASH='a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3';
+  let lockHash=DEFAULT_HASH, offline=false;
+  async function sha(t){
+    try{ const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));
+      return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join(''); }
+    catch(e){ return null; }
+  }
+  let apiMode=false, apiPw='';
+  function unlocked(){ if(offline) return true; if(apiMode) return !!apiPw; try{ return localStorage.getItem('cal.unlock')===lockHash; }catch(e){ return sessionUnlock===lockHash; } }
+  let sessionUnlock='';
+  function rememberUnlock(){ sessionUnlock=lockHash; try{ localStorage.setItem('cal.unlock',lockHash); }catch(e){} }
+  function applyLock(h){
+    lockHash = (typeof h==='string' && /^[0-9a-f]{64}$/.test(h)) ? h : DEFAULT_HASH;
+    if(editMode && !unlocked() && sessionUnlock!==lockHash){ setEdit(false); toast('편집 비밀번호가 바뀌었어요. 다시 입력해 주세요'); }
+  }
+  $('editBtn').addEventListener('click',()=>{
+    if(canWrite===false){ toast('보기 전용 권한이에요'); return; }
+    if(editMode){ setEdit(false); return; }
+    if(unlocked() || sessionUnlock===lockHash){ setEdit(true); return; }
+    $('lockPw').value=''; $('lockErr').textContent=''; openModal('lockModal'); setTimeout(()=>$('lockPw').focus(),50);
+  });
+  $('lockForm').addEventListener('submit',async ev=>{
+    ev.preventDefault();
+    if(apiMode){
+      const pw=$('lockPw').value;
+      try{ const res=await fetch(API+'/api/check',{method:'POST',headers:{'x-edit-password':encodeURIComponent(pw)}});
+        if(res.status===401){ $('lockErr').textContent='비밀번호가 맞지 않아요.'; return; }
+        if(!res.ok) throw 0;
+        apiPw=pw; try{localStorage.setItem('cal.pw',pw);}catch(_){} closeModals(); setEdit(true);
+      }catch(e){ $('lockErr').textContent='인터넷 연결을 확인해 주세요.'; }
+      return;
+    }
+    const h=await sha($('lockPw').value);
+    if(h===null){ $('lockErr').textContent='이 브라우저에서는 비밀번호를 확인할 수 없어요.'; return; }
+    if(h!==lockHash){ $('lockErr').textContent='비밀번호가 맞지 않아요.'; return; }
+    rememberUnlock(); closeModals(); setEdit(true);
+  });
+  $('pwBtn').addEventListener('click',()=>{ $('pwNew').value=''; $('pwNew2').value=''; $('pwErr').textContent=''; openModal('pwModal'); });
+  $('pwForm').addEventListener('submit',async ev=>{
+    ev.preventDefault();
+    const a=$('pwNew').value, b=$('pwNew2').value;
+    if(!a){ $('pwErr').textContent='새 비밀번호를 입력해 주세요.'; return; }
+    if(a!==b){ $('pwErr').textContent='두 비밀번호가 달라요.'; return; }
+    const h=await sha(a); if(!h){ $('pwErr').textContent='이 브라우저에서는 바꿀 수 없어요.'; return; }
+    if(offline){ lockHash=h; closeModals(); toast('이 파일의 비밀번호를 바꿨어요'); return; }
+    if(apiMode){ try{ await db.doc('settings/lock').set({password:a}); apiPw=a; try{localStorage.setItem('cal.pw',a);}catch(_){} closeModals(); toast('비밀번호를 바꿨어요'); }catch(e){ $('pwErr').textContent=errMsg(e); } return; }
+    try{ await db.doc('settings/lock').set({hash:h, updatedAt:new Date().toISOString()}); lockHash=h; rememberUnlock(); closeModals(); toast('비밀번호를 바꿨어요'); }
+    catch(e){ $('pwErr').textContent=errMsg(e); }
+  });
+
+  // ---------- toolbar ----------
+  function shift(dir){
+    if(view==='month') anchor=new Date(anchor.getFullYear(),anchor.getMonth()+dir,1);
+    else anchor=addDays(anchor, dir*(view==='week'?7:14));
+    render();
+  }
+  $('prev').addEventListener('click',()=>shift(-1));
+  $('next').addEventListener('click',()=>shift(1));
+  $('today').addEventListener('click',()=>{ anchor=new Date(); render(); });
+  document.querySelectorAll('#views button').forEach(b=>b.addEventListener('click',()=>{
+    if(view==='month' && b.dataset.v!=='month'){
+      const t=new Date(); if(t.getMonth()!==anchor.getMonth()||t.getFullYear()!==anchor.getFullYear()) anchor=new Date(anchor.getFullYear(),anchor.getMonth(),1);
+      else anchor=t;
+    }
+    setView(b.dataset.v);
+  }));
+  $('printBtn').addEventListener('click',()=>{
+    try{ window.print(); }catch(e){}
+    setTimeout(()=>toast('인쇄 창이 안 뜨면 브라우저 메뉴의 "인쇄"를 이용해 주세요'),400);
+  });
+
+  // ---------- data ----------
+  refreshBaby(); render();
+  const status=$('status');
+  function onEvents(snap){
+    events = snap.docs.map(d=>d.exists?clean(d.data()||{},d.id):null).filter(Boolean);
+    refreshBaby(); render();
+  }
+  function startOffline(){
+    offline=true;
+    const snap=window.__OFFLINE__||{};
+    const EK='dam.offline.events', BK='dam.offline.baby';
+    let map=null; try{ map=JSON.parse(localStorage.getItem(EK)||'null'); }catch(e){}
+    if(!map){ map={}; (snap.events||[]).forEach(e=>{ const {id,...rest}=e; if(id) map[id]=rest; }); }
+    let listener=null;
+    const emit=()=>listener&&listener({docs:Object.entries(map).map(([id,d])=>({id,exists:true,data:()=>d})),metadata:{fromCache:false}});
+    const persist=()=>{ try{localStorage.setItem(EK,JSON.stringify(map));}catch(e){} emit(); };
+    col={ doc:id=>({ set:async d=>{ map[id]=d; persist(); }, delete:async()=>{ delete map[id]; persist(); } }),
+          add:async d=>{ map['l'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)]=d; persist(); },
+          onSnapshot:cb=>{ listener=cb; setTimeout(emit,0); return ()=>{}; } };
+    db={ doc:()=>({ set:async d=>{ try{localStorage.setItem(BK,JSON.stringify(d));}catch(e){} applyBaby(d); } }) };
+    canWrite=true;
+    let b=null; try{ b=JSON.parse(localStorage.getItem(BK)||'null'); }catch(e){}
+    applyBaby(b||snap.baby||null);
+    col.onSnapshot(onEvents);
+    const when = snap.exportedAt ? new Date(snap.exportedAt) : null;
+    if(window.__STATIC_APP__){ status.textContent='이 기기에 저장돼요 · 인터넷 없이도 열려요'; const here=location.href.split('#')[0].split('?')[0]; $('appUrl').value=here; $('openBrowser').href=here; return; }
+    status.textContent='오프라인 앱 · 이 기기에만 저장돼요'+(when?` · ${when.getFullYear()}.${when.getMonth()+1}.${when.getDate()} 내려받음`:'');
+  }
+
+  // ---------- 다운로드 ----------
+  let downloads=null;
+  async function saveFile(filename,data){
+    if(downloads){ return downloads.save({filename,data}); }
+    const blob = data instanceof Blob ? data : new Blob([data]);
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=filename;
+    document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },1000);
+    return {status:'saved'};
+  }
+  function stamp(){ const d=new Date(); return `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}`; }
+  function buildAppHtml(){
+    closeModals();
+    const clone=document.documentElement.cloneNode(true);
+    const mine=[...clone.querySelectorAll('script')].find(x=>!x.src && x.textContent.includes('buildMilestones'));
+    clone.querySelectorAll('script').forEach(x=>{ if(x!==mine) x.remove(); });
+    clone.querySelectorAll('[data-claude],[id^="__claude"]').forEach(x=>x.remove());
+    clone.querySelector('#grid').innerHTML='';
+    const body=clone.querySelector('body'); body.className='';
+    clone.querySelectorAll('.backdrop').forEach(m=>m.classList.remove('open'));
+    const snap={ events: events.map(e=>({...e})), baby, exportedAt:new Date().toISOString() };
+    const head=clone.querySelector('head');
+    const icon=appIcon();
+    const metas=[['apple-mobile-web-app-capable','yes'],['mobile-web-app-capable','yes'],['apple-mobile-web-app-title','담이 캘린더'],['apple-mobile-web-app-status-bar-style','default']];
+    metas.forEach(([n,c])=>{ const m=document.createElement('meta'); m.name=n; m.content=c; head.appendChild(m); });
+    if(icon){ ['apple-touch-icon','icon'].forEach(rel=>{ const l=document.createElement('link'); l.rel=rel; l.href=icon; head.appendChild(l); }); }
+    const eb=clone.querySelector('#editBtn'); eb.textContent='편집하기'; eb.classList.remove('primary');
+    clone.querySelector('#pwBtn').style.display='none';
+    const hg=clone.querySelector('#homeGuide'); if(hg) hg.style.display='none';
+    const s=document.createElement('script');
+    s.textContent='window.__OFFLINE__='+JSON.stringify(snap).replace(/</g,'\\u003c')+';';
+    head.appendChild(s);
+    return '<!DOCTYPE html>\n'+clone.outerHTML;
+  }
+  function csvCell(v){ v=String(v==null?'':v); return /[",\n\r]/.test(v) ? '"'+v.replace(/"/g,'""')+'"' : v; }
+  function buildCsv(){
+    const all = events.concat(showAuto?milestones:[]).slice().sort((a,b)=>a.date.localeCompare(b.date));
+    const rows=[['Subject','Start Date','All Day Event','Start Time','Description']];
+    for(const e of all){
+      const [y,m,d]=e.date.split('-');
+      const timed = !!e.ampm;
+      const desc = e.auto ? [e.desc, e.where?('신청·문의: '+e.where):''].filter(Boolean).join('\n') : [e.memo, e.author?('작성자: '+e.author):''].filter(Boolean).join('\n');
+      rows.push([e.title, `${m}/${d}/${y}`, timed?'False':'True', timed?`${e.hour}:${pad(e.min||0)} ${e.ampm}`:'', desc]);
+    }
+    return '\ufeff'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n');
+  }
+  $('copyUrl').addEventListener('click',async()=>{
+    const v=$('appUrl').value;
+    try{ await navigator.clipboard.writeText(v); toast('링크를 복사했어요'); }
+    catch(e){ $('appUrl').select(); toast('링크를 길게 눌러 복사해 주세요'); }
+  });
+  $('fab').addEventListener('click',()=>{ const t=new Date(); openNew(key(view==='month'&&anchor.getMonth()!==t.getMonth()?anchor:t)); });
+  function appIcon(){
+    try{
+      const c=document.createElement('canvas'); c.width=c.height=192; const g=c.getContext('2d');
+      g.fillStyle='#2f6fed'; g.beginPath(); g.roundRect ? g.roundRect(0,0,192,192,42) : g.rect(0,0,192,192); g.fill();
+      g.fillStyle='#fff'; g.fillRect(36,44,120,112); g.fillStyle='#2f6fed'; g.fillRect(36,44,120,26);
+      g.fillStyle='#2f6fed'; g.font='bold 64px "Noto Sans KR", sans-serif'; g.textAlign='center'; g.textBaseline='middle'; g.fillText('담',96,116);
+      return c.toDataURL('image/png');
+    }catch(e){ return ''; }
+  }
+  let installEvt=null;
+  const API=(window.DAMI_API||'').replace(/\/+$/,'');
+  const hosted=/^https?:$/.test(location.protocol) && !/claude|anthropic/.test(location.host);
+  const standaloneNow=()=>matchMedia('(display-mode: standalone)').matches || navigator.standalone===true;
+  function registerSW(){ if(hosted && 'serviceWorker' in navigator){ window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{})); if(document.readyState==='complete') navigator.serviceWorker.register('sw.js').catch(()=>{}); } }
+  window.addEventListener('beforeinstallprompt',e=>{ e.preventDefault(); installEvt=e; if(hosted) $('dlBtn').style.display=''; });
+  window.addEventListener('appinstalled',()=>{ installEvt=null; $('dlBtn').style.display='none'; toast('앱이 설치됐어요'); });
+  function showInstallForIOS(){ if(hosted && isIOS && !standaloneNow()) $('dlBtn').style.display=''; }
+  $('dlBtn').addEventListener('click',async()=>{
+    if(installEvt){ installEvt.prompt(); try{ await installEvt.userChoice; }catch(_){} installEvt=null; $('dlBtn').style.display='none'; return; }
+    setupSync(); $('dlErr').textContent=''; openModal('dlModal');
+  });
+  async function doSave(name,make){
+    $('dlErr').textContent='';
+    try{ const data=make(); await saveFile(name,data); closeModals(); toast('파일을 저장했어요'); }
+    catch(e){ const c=e&&e.code;
+      $('dlErr').textContent = c==='declined' ? '저장을 취소했어요.' : c==='rate_limited' ? '잠시 후 다시 눌러 주세요.' : '이 화면에서는 파일을 저장할 수 없어요.'; }
+  }
+  const isIOS=/iPhone|iPad|iPod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  function setOS(os){
+    document.querySelectorAll('#osSeg button').forEach(b=>b.classList.toggle('on',b.dataset.os===os));
+    $('osAndroid').style.display = os==='android'?'':'none'; $('osIos').style.display = os==='ios'?'':'none';
+    $('syncAndroid').style.display = os==='android'?'':'none'; $('syncIos').style.display = os==='ios'?'':'none';
+  }
+  document.querySelectorAll('#osSeg button').forEach(b=>b.addEventListener('click',()=>setOS(b.dataset.os)));
+  setOS(isIOS?'ios':'android');
+  function setupSync(){
+    if(!apiMode){ $('calSync').style.display='none'; $('calSyncOff').style.display=''; return; }
+    const feed=(API||location.origin)+'/calendar.ics', web=feed.replace(/^https?:\/\//,'webcal://');
+    $('feedUrl').value=feed; $('icalLink').href=web;
+    $('gcalLink').href='https://calendar.google.com/calendar/r?cid='+encodeURIComponent(web);
+  }
+  $('calBtn').addEventListener('click',()=>{ setupSync(); $('dlErr').textContent=''; openModal('dlModal'); setTimeout(()=>$('calSync').scrollIntoView({block:'start'}),50); });
+  $('copyFeed').addEventListener('click',async()=>{ try{ await navigator.clipboard.writeText($('feedUrl').value); toast('주소를 복사했어요'); }catch(e){ $('feedUrl').select(); toast('주소를 길게 눌러 복사해 주세요'); } });
+  $('installNow').addEventListener('click',async()=>{
+    if(installEvt){ try{ installEvt.prompt(); const c=await installEvt.userChoice; if(c&&c.outcome==='accepted'){ installEvt=null; closeModals(); } }catch(e){} return; }
+    toast('설치 창이 안 뜨면 크롬 ⋮ 메뉴 → 「앱 설치」 또는 「홈 화면에 추가」를 눌러 주세요');
+  });
+
+  function startApi(){
+    apiMode=true; canWrite=true;
+    try{ apiPw=localStorage.getItem('cal.pw')||''; }catch(e){}
+    const here=location.href.split('#')[0].split('?')[0]; $('appUrl').value=here; $('openBrowser').href=here;
+    $('calBtn').style.display='';
+    let state={events:{},baby:null}; const evL=[]; let babyL=null;
+    const emit=()=>{ const docs=Object.entries(state.events||{}).map(([id,d])=>({id,exists:true,data:()=>d}));
+      evL.forEach(cb=>cb({docs,metadata:{fromCache:false}})); babyL&&babyL({exists:!!state.baby,data:()=>state.baby}); };
+    let lastOk=0;
+    async function pull(){
+      try{ const r=await fetch(API+'/api/state',{cache:'no-store'}); if(!r.ok) throw 0; state=await r.json(); lastOk=Date.now();
+        status.textContent=`일정 ${Object.keys(state.events||{}).length}개 · 가족과 함께 보는 중`; emit(); }
+      catch(e){ status.textContent = lastOk ? '인터넷 연결이 끊겨 최신 내용이 아닐 수 있어요' : '일정을 불러오지 못했어요. 인터넷 연결을 확인해 주세요.'; }
+    }
+    async function call(method,url,body){
+      let r; try{ r=await fetch(API+url,{method,headers:{'content-type':'application/json','x-edit-password':encodeURIComponent(apiPw)},body:body?JSON.stringify(body):undefined}); }
+      catch(e){ const er=new Error('net'); er.code='unavailable'; throw er; }
+      if(r.status===401){ const er=new Error('pw'); er.code='bad_password'; throw er; }
+      if(!r.ok){ const er=new Error('x'); er.code='unavailable'; throw er; }
+      await pull();
+    }
+    col={ doc:id=>({ set:d=>call('PUT','/api/events/'+encodeURIComponent(id),d), delete:()=>call('DELETE','/api/events/'+encodeURIComponent(id)) }),
+          add:d=>call('POST','/api/events',d), onSnapshot:cb=>{ evL.push(cb); return ()=>{}; } };
+    db={ doc:p=> p==='settings/baby'
+          ? { set:d=>call('PUT','/api/baby',d), onSnapshot:cb=>{ babyL=cb; return ()=>{}; } }
+          : { set:d=>call('POST','/api/password',d), onSnapshot:()=>()=>{} } };
+    db.doc('settings/baby').onSnapshot(s=>applyBaby(s.exists?s.data():null));
+    col.onSnapshot(onEvents);
+    pull(); setInterval(()=>{ if(!document.hidden) pull(); },20000);
+    document.addEventListener('visibilitychange',()=>{ if(!document.hidden) pull(); });
+  }
+
+  (async()=>{
+    registerSW(); showInstallForIOS();
+    if(API || window.__API_MODE__){ startApi(); return; }
+    if(window.__OFFLINE__){ startOffline(); return; }
+    if(window.claude && typeof window.claude.use==='function'){ try{ downloads = await window.claude.use('downloads'); }catch(e){ downloads=null; } }
+    if(!window.claude || typeof window.claude.use!=='function'){ status.textContent='저장소에 연결할 수 없어요. 일정은 이 화면에서만 볼 수 있어요.'; $('editBtn').disabled=true; return; }
+    try{ user = await window.claude.use('user'); }catch(e){ user=null; }
+    try{ db = await window.claude.use('db'); }catch(e){ db=null; }
+    if(!db){ status.textContent='로그인 후 일정을 볼 수 있어요.'; $('editBtn').disabled=true; return; }
+    col = db.collection('events');
+
+    if(user){
+      try{ const w = await user.can('data.write'); if(w===false) setReadOnly(); else canWrite = w; }catch(e){}
+      if(!myName){ try{ const me=await user.me(); if(me&&me.name){ myName=me.name; } }catch(e){} }
+    }
+
+    db.doc('settings/baby').onSnapshot(s=>applyBaby(s.exists?s.data():null), ()=>{});
+    db.doc('settings/lock').onSnapshot(s=>applyLock(s.exists?(s.data()||{}).hash:null), ()=>{});
+    let first=true;
+    const timer=setTimeout(()=>{ status.textContent= events.length ? '최신 내용이 아닐 수 있어요. 연결을 확인하는 중…' : '일정을 불러오지 못하고 있어요. 연결을 확인해 주세요.'; },10000);
+    col.onSnapshot(snap=>{
+      onEvents(snap);
+      if(!snap.metadata.fromCache){ clearTimeout(timer); first=false;
+        status.textContent = `일정 ${events.length}개 · 실시간으로 함께 보는 중` + (canWrite===false?' · 보기 전용':''); }
+    }, err=>{
+      clearTimeout(timer);
+      status.textContent = err && err.code==='revoked' ? '접근 권한이 바뀌었어요.' : '일정을 불러오지 못했어요.';
+    });
+  })();
+})();
+</script>
+</body>
+</html>

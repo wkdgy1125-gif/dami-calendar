@@ -85,7 +85,10 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
   .num .md{color:var(--muted);font-weight:400;font-size:12px}
   .day.sun .num>span:first-child,.day.sun .num .md{color:var(--sun)!important;font-weight:700}
   .day.sat .num>span:first-child,.day.sat .num .md{color:var(--sat)!important;font-weight:700}
-  .day.out.sun .num>span:first-child{color:#f3a5a5!important}
+  .day.hol .num>span:first-child,.day.hol .num .md{color:var(--sun)!important;font-weight:700}
+  .num .hname{color:var(--sun);font-size:11px;font-weight:500;margin:0 4px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+  .day.out .num .hname{opacity:.5}
+  .day.out.sun .num>span:first-child,.day.out.hol .num>span:first-child{color:#f3a5a5!important}
   .day.out.sat .num>span:first-child{color:#a5bff3!important}
   .dow div.sun,.dow div.sat{font-weight:700}
   .ev{display:block;width:100%;text-align:left;border:0;border-left:3px solid var(--c,#2f6fed);
@@ -660,6 +663,45 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
     info.append(b,s);
   }
 
+  // ---------- 대한민국 공휴일 (관공서의 공휴일에 관한 규정 + 우주항공청 월력요항) ----------
+  const LUNAR={ // [설날, 부처님오신날, 추석] (한국천문연구원 음력 기준)
+    2026:['2026-02-17','2026-05-24','2026-09-25'], 2027:['2027-02-07','2027-05-13','2027-09-15'],
+    2028:['2028-01-27','2028-05-02','2028-10-03'], 2029:['2029-02-13','2029-05-20','2029-09-22'],
+    2030:['2030-02-03','2030-05-09','2030-09-12'], 2031:['2031-01-23','2031-05-28','2031-10-01'],
+    2032:['2032-02-11','2032-05-16','2032-09-19'], 2033:['2033-01-31','2033-05-06','2033-09-08'] };
+  const EXTRA={'2026-06-03':'지방선거일','2028-04-12':'국회의원 선거일'};
+  const holCache={};
+  function holidaysOf(Y){
+    if(holCache[Y]) return holCache[Y];
+    const H={}; const add=(k,n)=>{ H[k]=H[k]?H[k]+'·'+n:n; };
+    const fix=(m,d)=>`${Y}-${pad(m)}-${pad(d)}`;
+    const subEligible=[]; // 토·일 또는 다른 공휴일과 겹치면 대체
+    add(fix(1,1),'신정');
+    [[3,1,'삼일절'],[5,1,'노동절'],[5,5,'어린이날'],[7,17,'제헌절'],[8,15,'광복절'],[10,3,'개천절'],[10,9,'한글날'],[12,25,'성탄절']]
+      .forEach(([m,d,n])=>{ if((n==='노동절'||n==='제헌절') && Y<2026) return; add(fix(m,d),n); subEligible.push(fix(m,d)); });
+    add(fix(6,6),'현충일');
+    const L=LUNAR[Y]; const lunarPeriods=[];
+    if(L){
+      const [seol,budda,chu]=L.map(parseKey);
+      const sp=[-1,0,1].map(o=>key(addDays(seol,o))); sp.forEach((k,i)=>add(k,i===1?'설날':'설 연휴')); lunarPeriods.push(sp);
+      add(key(budda),'부처님오신날'); subEligible.push(key(budda));
+      const cp=[-1,0,1].map(o=>key(addDays(chu,o))); cp.forEach((k,i)=>add(k,i===1?'추석':'추석 연휴')); lunarPeriods.push(cp);
+    }
+    for(const k in EXTRA) if(k.startsWith(Y+'-')) add(k,EXTRA[k]);
+    const base={...H}; const count=k=>Object.keys(base).filter(x=>x===k).length;
+    const dow=k=>parseKey(k).getDay();
+    const isOff=k=>!!H[k] || dow(k)===0;
+    const nextFree=k=>{ let d=addDays(parseKey(k),1); while(isOff(key(d))||d.getDay()===6) d=addDays(d,1); return key(d); };
+    const overlapped=k=>base[k] && base[k].includes('·');
+    // 설·추석: 연휴가 일요일 또는 다른 공휴일과 겹치면 연휴 다음 첫 비공휴일
+    const covered=new Set(); // 명절과 겹친 국경일은 대체공휴일을 하루만 둬요
+    lunarPeriods.forEach(per=>{ if(per.some(k=>dow(k)===0 || overlapped(k))){ let d=addDays(parseKey(per[2]),1); while(isOff(key(d))) d=addDays(d,1); add(key(d),'대체공휴일'); per.forEach(k=>{ if(overlapped(k)&&dow(k)!==0&&dow(k)!==6) covered.add(k); }); } });
+    // 그 밖의 대체 대상: 토·일 또는 다른 공휴일과 겹치면 다음 첫 평일 비공휴일
+    subEligible.sort().forEach(k=>{ if(covered.has(k)) return; if(dow(k)===0||dow(k)===6||overlapped(k)){ add(nextFree(k),'대체공휴일'); } });
+    holCache[Y]=H; return H;
+  }
+  const holidayName=k=>holidaysOf(Number(k.slice(0,4)))[k]||'';
+
   // ---------- range ----------
   function range(){
     if(view==='week'){ const s=monday(anchor); return {start:s, days:7}; }
@@ -698,13 +740,15 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
     for(let i=0;i<r.days;i++){
       const d=addDays(r.start,i), k=key(d), wd=(d.getDay()+6)%7;
       const cell=document.createElement('div');
-      cell.className='day'+(wd===5?' sat':'')+(wd===6?' sun':'')+(k===todayK?' today':'')
+      const hn=holidayName(k);
+      cell.className='day'+(wd===5?' sat':'')+(wd===6?' sun':'')+(hn?' hol':'')+(k===todayK?' today':'')
         +(view==='month'&&d.getMonth()!==anchor.getMonth()?' out':'');
       cell.dataset.date=k;
       const num=document.createElement('div'); num.className='num';
       const n1=document.createElement('span'); n1.textContent=d.getDate();
       num.appendChild(n1);
       if(view!=='month'){ const n2=document.createElement('span'); n2.className='md'; n2.textContent=`${d.getMonth()+1}/${d.getDate()} (${DOW[wd]})`; num.appendChild(n2); }
+      if(hn){ const h=document.createElement('span'); h.className='hname'; h.textContent=hn.replace(/·?대체공휴일/,'')||'대체공휴일'; if(/대체공휴일/.test(hn)) h.textContent=(hn.replace(/·?대체공휴일/,'')?hn.replace(/·?대체공휴일/,'')+'·':'')+'대체휴일'; num.insertBefore(h, num.children[1]||null); }
       cell.appendChild(num);
       const box=document.createElement('div'); box.className='evs';
       const list=byDate[k]||[];

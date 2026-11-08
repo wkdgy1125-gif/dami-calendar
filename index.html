@@ -141,6 +141,13 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
   .links a{display:flex;align-items:center;gap:6px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#f8f5ff;color:#4c2fb0;text-decoration:none;font-weight:500;font-size:14px;word-break:break-all}
   .links.src a{background:#fff;color:#475569;font-weight:400;font-size:13px;padding:8px 10px}
   .links a::after{content:'↗';margin-left:auto;opacity:.6}
+  .cat-pick{display:flex;flex-wrap:wrap;gap:6px}
+  .cat-pick label{margin:0;font-weight:400;cursor:pointer}
+  .cat-pick input{position:absolute;opacity:0;width:0;height:0}
+  .cat-pick span{display:inline-flex;align-items:center;gap:6px;padding:7px 11px;border:1.5px solid var(--line);border-radius:999px;font-size:13px;background:#fff;color:#374151}
+  .cat-pick i{width:10px;height:10px;border-radius:50%;background:var(--c);display:inline-block}
+  .cat-pick input:checked+span{border-color:var(--c);background:color-mix(in srgb,var(--c) 14%,white);color:var(--ink);font-weight:700}
+  .cat-pick input:focus-visible+span{outline:2px solid var(--c);outline-offset:1px}
   .err{color:var(--sun);font-size:13px;min-height:16px}
   .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#111827;color:#fff;
     padding:10px 16px;border-radius:999px;font-size:14px;opacity:0;transition:.25s;pointer-events:none;z-index:60}
@@ -300,6 +307,18 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
             <select id="fAmpm"><option value="">시간 없음</option><option value="AM">오전</option><option value="PM">오후</option></select>
             <select id="fHour"></select>
             <select id="fMin"></select>
+          </div>
+        </div>
+        <div class="field"><label>분류 (색상)</label>
+          <div class="cat-pick" id="fCat">
+            <label style="--c:#94a3b8"><input type="radio" name="fcat" value=""><span><i></i>기본</span></label>
+            <label style="--c:#dc2626"><input type="radio" name="fcat" value="deadline"><span><i></i>신청 기한</span></label>
+            <label style="--c:#16a34a"><input type="radio" name="fcat" value="money"><span><i></i>지원금·급여</span></label>
+            <label style="--c:#2563eb"><input type="radio" name="fcat" value="check"><span><i></i>건강검진</span></label>
+            <label style="--c:#9333ea"><input type="radio" name="fcat" value="vax"><span><i></i>예방접종</span></label>
+            <label style="--c:#d97706"><input type="radio" name="fcat" value="work"><span><i></i>휴가·직장</span></label>
+            <label style="--c:#db2777"><input type="radio" name="fcat" value="day"><span><i></i>담이 기념일</span></label>
+            <label style="--c:#0d9488"><input type="radio" name="fcat" value="shop"><span><i></i>혜택·이벤트</span></label>
           </div>
         </div>
         <div class="field"><label>메모 (선택)</label><textarea id="fMemo" maxlength="500"></textarea></div>
@@ -732,6 +751,8 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
   // time selects
   $('fHour').innerHTML=Array.from({length:12},(_,i)=>`<option value="${i+1}">${i+1}시</option>`).join('');
   $('fMin').innerHTML=[0,10,15,20,30,40,45,50].map(m=>`<option value="${m}">${pad(m)}분</option>`).join('');
+  function setCat(v){ document.querySelectorAll('#fCat input').forEach(x=>x.checked=(x.value===v)); }
+  function getCat(){ const x=document.querySelector('#fCat input:checked'); return x?x.value:''; }
   function syncTime(){ const off=!$('fAmpm').value; $('fHour').disabled=off; $('fMin').disabled=off; }
   $('fAmpm').addEventListener('change',syncTime);
 
@@ -742,7 +763,7 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
     editingId=null;
     $('evTitle').textContent='일정 추가';
     $('fTitle').value=''; $('fDate').value=dateK; $('fAmpm').value='';
-    $('fHour').value='9'; $('fMin').value='0'; $('fMemo').value=''; $('fLinks').value='';
+    $('fHour').value='9'; $('fMin').value='0'; $('fMemo').value=''; $('fLinks').value=''; setCat('');
     $('fAuthor').value=myName; $('fErr').textContent='';
     $('delBtn').style.display='none';
     syncTime(); openModal('evModal'); setTimeout(()=>$('fTitle').focus(),50);
@@ -754,7 +775,7 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
       $('fTitle').value=e.title; $('fDate').value=e.date; $('fAmpm').value=e.ampm;
       $('fHour').value=String(e.hour); $('fMin').value=String(e.min);
       if(!$('fMin').value) $('fMin').value='0';
-      $('fMemo').value=e.memo; $('fLinks').value=(e.links||[]).map(x=>x.u).join('\n'); $('fAuthor').value=e.author; $('fErr').textContent='';
+      setCat(e.cat||''); $('fMemo').value=e.memo; $('fLinks').value=(e.links||[]).map(x=>x.u).join('\n'); $('fAuthor').value=e.author; $('fErr').textContent='';
       $('delBtn').style.display=''; $('delBtn').textContent='삭제'; $('delBtn').dataset.confirm='';
       syncTime(); openModal('evModal');
     } else {
@@ -780,7 +801,7 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
       hour:Number($('fHour').value), min:Number($('fMin').value),
       memo:$('fMemo').value.trim(), author, updatedAt:new Date().toISOString(),
       links: linksFromText($('fLinks').value, editingId && (events.find(x=>x.id===editingId)||{}).links) };
-    const prev = editingId && events.find(x=>x.id===editingId); if(prev && prev.cat) body.cat=prev.cat; if(prev && prev.sources && prev.sources.length) body.sources=prev.sources;
+    const prev = editingId && events.find(x=>x.id===editingId); body.cat=getCat(); if(prev && prev.sources && prev.sources.length) body.sources=prev.sources;
     if(author){ myName=author; try{localStorage.setItem('cal.author',author);}catch(e){} }
     $('saveBtn').disabled=true;
     try{

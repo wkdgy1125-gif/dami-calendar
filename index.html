@@ -98,6 +98,14 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
   .ev .t{color:var(--muted);font-size:11.5px;margin-right:4px}
   .ev .a{display:block;color:var(--muted);font-size:11px}
   .grid.month .ev .a{display:none}
+  .ev.span{border-radius:0;margin-left:-7px;margin-right:-7px;width:calc(100% + 14px);border-left:0;height:23px;line-height:17px;white-space:nowrap;overflow:hidden;background:color-mix(in srgb,var(--c) 28%,white);font-weight:500}
+  .ev.span.st{margin-left:0;width:calc(100% + 7px);border-left:3px solid var(--c);border-top-left-radius:6px;border-bottom-left-radius:6px}
+  .ev.span.en{margin-right:0;width:calc(100% + 7px);border-top-right-radius:6px;border-bottom-right-radius:6px}
+  .ev.span.st.en{width:100%}
+  .ev.span.lbl{overflow:visible;position:relative;z-index:2}
+  .ev-sp{height:23px;margin-bottom:3px}
+  .day.sel{background:color-mix(in srgb,var(--accent) 16%,white)!important;box-shadow:inset 0 0 0 2px var(--accent)}
+  body.edit #grid{touch-action:pan-y;user-select:none;-webkit-user-select:none}
   .more{font-size:12px;color:var(--muted);padding:0 4px}
 
   .ev.auto{border-left-style:solid;background:color-mix(in srgb,var(--c) 9%,white);font-weight:500}
@@ -279,6 +287,7 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
   <div class="baby-bar">
     <div class="info" id="babyInfo">담이 정보를 불러오는 중…</div>
     <label class="toggle"><input type="checkbox" id="showAuto" checked> 육아·지원금 일정 표시</label>
+    <button class="btn" id="notiBtn" style="display:none">🔔 알림 켜기</button>
     <button class="btn" id="calBtn" style="display:none">📅 폰 캘린더</button>
     <button class="btn" id="babyBtn">담이 정보</button>
     <div class="legend" style="width:100%">
@@ -307,7 +316,9 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
       <div class="modal-b">
         <div class="field"><label>제목 <span class="req">*</span></label>
           <input id="fTitle" maxlength="80" required placeholder="예: 주간 회의"></div>
-        <div class="field"><label>날짜</label><input type="date" id="fDate" required></div>
+        <div class="field"><label>날짜</label>
+          <div class="row"><input type="date" id="fDate" required aria-label="시작일"><span style="flex:0;align-self:center;color:var(--muted)">~</span><input type="date" id="fEnd" aria-label="종료일"></div>
+          <div class="hint">하루 일정은 뒤 칸을 비워 두세요. 이틀 이상이면 끝나는 날을 고르면 달력에 막대로 이어져 보여요. (편집 중에 달력에서 날짜를 끌어도 기간이 선택돼요)</div></div>
         <div class="field"><label>시간 (선택)</label>
           <div class="row">
             <select id="fAmpm"><option value="">시간 없음</option><option value="AM">오전</option><option value="PM">오후</option></select>
@@ -327,6 +338,15 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
             <label style="--c:#0d9488"><input type="radio" name="fcat" value="shop"><span><i></i>혜택·이벤트</span></label>
           </div>
         </div>
+        <div class="field"><label>🔔 알림 (여러 개 선택 가능)</label>
+          <div class="cat-pick rem-pick" id="fRem">
+            <label style="--c:#7c5cd6"><input type="checkbox" value="d0"><span>당일 오전 9시</span></label>
+            <label style="--c:#7c5cd6"><input type="checkbox" value="d1"><span>1일 전</span></label>
+            <label style="--c:#7c5cd6"><input type="checkbox" value="d3"><span>3일 전</span></label>
+            <label style="--c:#7c5cd6"><input type="checkbox" value="d7"><span>1주 전</span></label>
+            <label style="--c:#7c5cd6" id="remH1"><input type="checkbox" value="h1"><span>1시간 전</span></label>
+          </div>
+          <div class="hint" id="remHint">알림은 오전 9시에 와요. 받으려면 위쪽 「🔔 알림 켜기」를 먼저 눌러 주세요.</div></div>
         <div class="field"><label>메모 (선택)</label><textarea id="fMemo" maxlength="500"></textarea></div>
         <div class="field"><label>관련 링크 (선택)</label><textarea id="fLinks" rows="2" placeholder="https://… (한 줄에 하나씩)" style="min-height:50px"></textarea></div>
         <div class="field"><label>작성자 이름</label><input id="fAuthor" maxlength="30" placeholder="이름"></div>
@@ -531,7 +551,9 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
       hour: Math.min(12,Math.max(1,Number(raw.hour)||12)), min: Math.min(59,Math.max(0,Number(raw.min)||0)),
       memo:s(raw.memo).slice(0,500), author:s(raw.author).slice(0,30),
       cat: ['deadline','money','check','vax','work','day','shop'].includes(raw.cat) ? raw.cat : '',
-      links: cleanLinks(raw.links), sources: cleanLinks(raw.sources) };
+      links: cleanLinks(raw.links), sources: cleanLinks(raw.sources),
+      endDate: (/^\d{4}-\d{2}-\d{2}$/.test(raw.endDate||'') && raw.endDate>date) ? raw.endDate : '',
+      remind: Array.isArray(raw.remind) ? raw.remind.filter(x=>['d0','d1','d3','d7','h1'].includes(x)) : (raw.cat==='deadline' && raw.author==='육아 지원 일정' ? ['d1'] : []) };
   }
   function cleanLinks(a){
     if(!Array.isArray(a)) return [];
@@ -728,8 +750,22 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
     $('range').textContent=rangeLabel(r);
     $('dow').innerHTML=DOW.map((d,i)=>`<div class="${i===5?'sat':i===6?'sun':''}">${d}</div>`).join('');
 
-    const byDate={};
-    for(const e of events){ (byDate[e.date] ||= []).push(e); }
+    const byDate={}; const multi=[];
+    for(const e of events){ if(e.endDate && e.endDate>e.date) multi.push(e); else (byDate[e.date] ||= []).push(e); }
+    const listMode = view!=='month' && matchMedia('(max-width:680px)').matches;
+    // 주 단위로 여러 날 일정의 줄(레인)을 정해 이어진 막대로 그려요
+    const laneOf={}; const lanesInWeek={};
+    for(let w=0; w<r.days; w+=7){
+      const ws=key(addDays(r.start,w)), we=key(addDays(r.start,Math.min(w+6,r.days-1)));
+      const items=multi.filter(e=>e.date<=we && e.endDate>=ws).sort((a,b)=>a.date.localeCompare(b.date)||b.endDate.localeCompare(a.endDate));
+      const lanes=[];
+      for(const e of items){
+        const s0=e.date<ws?ws:e.date, e0=e.endDate>we?we:e.endDate;
+        let L=0; while(lanes[L] && lanes[L].some(([a,b])=>!(e0<a||s0>b))) L++;
+        (lanes[L] ||= []).push([s0,e0]); laneOf[e.id+'@'+w]=L;
+      }
+      lanesInWeek[w]=lanes.length;
+    }
     if(showAuto) for(const e of milestones){ (byDate[e.date] ||= []).push(e); }
     const sv=e=> e.auto ? (e.cat==='day'?-4:e.cat==='deadline'?-3:-2) : sortVal(e);
     for(const k in byDate) byDate[k].sort((a,b)=>sv(a)-sv(b)||a.title.localeCompare(b.title));
@@ -751,8 +787,29 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
       if(hn){ const h=document.createElement('span'); h.className='hname'; h.textContent=hn.replace(/·?대체공휴일/,'')||'대체공휴일'; if(/대체공휴일/.test(hn)) h.textContent=(hn.replace(/·?대체공휴일/,'')?hn.replace(/·?대체공휴일/,'')+'·':'')+'대체휴일'; num.insertBefore(h, num.children[1]||null); }
       cell.appendChild(num);
       const box=document.createElement('div'); box.className='evs';
+      const w=Math.floor(i/7)*7, nl=lanesInWeek[w]||0;
+      if(nl){
+        const row=new Array(nl).fill(null);
+        for(const e of multi){ if(e.date<=k && e.endDate>=k){ const L=laneOf[e.id+'@'+w]; if(L!=null) row[L]=e; } }
+        row.forEach(e=>{
+          if(!e){ if(!listMode){ const sp=document.createElement('div'); sp.className='ev-sp'; box.appendChild(sp); } return; }
+          const b=document.createElement('button'); b.type='button';
+          const isS=k===e.date, isE=k===e.endDate, wkS=wd===0, wkE=wd===6;
+          b.className='ev span'+((isS||wkS||listMode)?' st':'')+((isE||wkE||listMode)?' en':'')+((isS||wkS||listMode)?' lbl':'');
+          b.style.setProperty('--c', e.cat ? CAT[e.cat].c : colorFor(e.author));
+          const n=Math.round((parseKey(e.endDate)-parseKey(e.date))/864e5)+1;
+          const sd=parseKey(e.date), ed=parseKey(e.endDate);
+          const rg=`${sd.getMonth()+1}/${sd.getDate()}~${ed.getMonth()+1}/${ed.getDate()}`;
+          if(isS||wkS||listMode) b.textContent=(e.remind&&e.remind.length?'🔔 ':'')+e.title+(listMode?` · ${rg}`:'');
+          else b.innerHTML='&nbsp;';
+          b.title=`${e.title} (${rg}, ${n}일)`;
+          b.addEventListener('click',ev=>{ ev.stopPropagation(); openEvent(e); });
+          box.appendChild(b);
+        });
+      }
       const list=byDate[k]||[];
-      const shown = view==='month' ? list.slice(0, list.length>maxMonth?maxMonth-1:maxMonth) : list;
+      const room=Math.max(1,maxMonth-nl);
+      const shown = view==='month' ? list.slice(0, list.length>room?room-1:room) : list;
       for(const e of shown){
         const b=document.createElement('button'); b.type='button';
         if(e.auto){
@@ -768,7 +825,7 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
         if(e.cat==='deadline') b.classList.add('auto','deadline');
         const tl=timeLabel(e);
         if(tl){ const t=document.createElement('span'); t.className='t'; t.textContent=tl; b.appendChild(t); }
-        b.appendChild(document.createTextNode(e.title));
+        b.appendChild(document.createTextNode((e.remind&&e.remind.length?'🔔 ':'')+e.title));
         if(e.author){ const a=document.createElement('span'); a.className='a'; a.textContent=e.author; b.appendChild(a); }
         b.title=(tl?tl+' ':'')+e.title+(e.author?` · ${e.author}`:'');
         b.addEventListener('click',ev=>{ ev.stopPropagation(); openEvent(e); });
@@ -782,10 +839,25 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
         box.appendChild(m);
       }
       cell.appendChild(box);
-      cell.addEventListener('click',()=>{ if(editMode) openNew(k); });
+      cell.addEventListener('click',()=>{ if(editMode && !dragJustEnded) openNew(k); });
       grid.appendChild(cell);
     }
   }
+  // 편집 모드에서 날짜를 끌어서 기간 선택
+  let dragStart=null, dragEnd=null, dragJustEnded=false;
+  const dayAt=(x,y)=>{ const el=document.elementFromPoint(x,y); const d=el&&el.closest&&el.closest('.day'); return d&&d.dataset.date; };
+  function paintSel(){ const a=dragStart<dragEnd?dragStart:dragEnd, b=dragStart<dragEnd?dragEnd:dragStart;
+    document.querySelectorAll('#grid .day').forEach(c=>c.classList.toggle('sel', !!dragStart && c.dataset.date>=a && c.dataset.date<=b)); }
+  $('grid').addEventListener('pointerdown',e=>{
+    if(!editMode || e.button>0 || e.target.closest('.ev')) return;
+    const k=dayAt(e.clientX,e.clientY); if(!k) return; dragStart=dragEnd=k; paintSel();
+  });
+  $('grid').addEventListener('pointermove',e=>{ if(!dragStart) return; const k=dayAt(e.clientX,e.clientY); if(k&&k!==dragEnd){ dragEnd=k; paintSel(); } });
+  const endDrag=(cancel)=>{ if(!dragStart) return; const a=dragStart<dragEnd?dragStart:dragEnd, b=dragStart<dragEnd?dragEnd:dragStart;
+    const was=dragStart!==dragEnd; dragStart=dragEnd=null; paintSel();
+    if(was && !cancel){ dragJustEnded=true; setTimeout(()=>dragJustEnded=false,350); openNew(a,b); } };
+  window.addEventListener('pointerup',()=>endDrag(false));
+  $('grid').addEventListener('pointercancel',()=>endDrag(true));
   function setView(v){ view=v; try{localStorage.setItem('cal.view',v);}catch(e){} render(); }
 
   // ---------- modals ----------
@@ -800,16 +872,18 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
   $('fMin').innerHTML=[0,10,15,20,30,40,45,50].map(m=>`<option value="${m}">${pad(m)}분</option>`).join('');
   function setCat(v){ document.querySelectorAll('#fCat input').forEach(x=>x.checked=(x.value===v)); }
   function getCat(){ const x=document.querySelector('#fCat input:checked'); return x?x.value:''; }
-  function syncTime(){ const off=!$('fAmpm').value; $('fHour').disabled=off; $('fMin').disabled=off; }
+  function syncTime(){ const ho=$('remH1'); if(ho) ho.style.display=$('fAmpm').value?'':'none'; const off=!$('fAmpm').value; $('fHour').disabled=off; $('fMin').disabled=off; }
   $('fAmpm').addEventListener('change',syncTime);
 
   let myName='';
   try { myName = localStorage.getItem('cal.author') || ''; } catch(e){}
 
-  function openNew(dateK){
+  function setRem(a){ document.querySelectorAll('#fRem input').forEach(x=>x.checked=(a||[]).includes(x.value)); }
+  function getRem(){ return [...document.querySelectorAll('#fRem input:checked')].map(x=>x.value).filter(v=>v!=='h1'||$('fAmpm').value); }
+  function openNew(dateK,endK){
     editingId=null;
     $('evTitle').textContent='일정 추가';
-    $('fTitle').value=''; $('fDate').value=dateK; $('fAmpm').value='';
+    $('fTitle').value=''; $('fDate').value=dateK; $('fEnd').value=(endK&&endK>dateK)?endK:''; $('fAmpm').value=''; setRem([]);
     $('fHour').value='9'; $('fMin').value='0'; $('fMemo').value=''; $('fLinks').value=''; setCat('');
     $('fAuthor').value=myName; $('fErr').textContent='';
     $('delBtn').style.display='none';
@@ -819,7 +893,7 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
     if(editMode){
       editingId=e.id;
       $('evTitle').textContent='일정 수정';
-      $('fTitle').value=e.title; $('fDate').value=e.date; $('fAmpm').value=e.ampm;
+      $('fTitle').value=e.title; $('fDate').value=e.date; $('fEnd').value=e.endDate||''; $('fAmpm').value=e.ampm; setRem(e.remind);
       $('fHour').value=String(e.hour); $('fMin').value=String(e.min);
       if(!$('fMin').value) $('fMin').value='0';
       setCat(e.cat||''); $('fMemo').value=e.memo; $('fLinks').value=(e.links||[]).map(x=>x.u).join('\n'); $('fAuthor').value=e.author; $('fErr').textContent='';
@@ -828,7 +902,10 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
     } else {
       $('vTitle').textContent=e.title;
       const d=parseKey(e.date);
-      $('vDate').textContent=`${d.getFullYear()}년 ${d.getMonth()+1}월 ${d.getDate()}일 (${DOW[(d.getDay()+6)%7]})`+(e.ampm?' · '+timeLabel(e):'');
+      const ed=e.endDate?parseKey(e.endDate):null;
+      $('vDate').textContent=`${d.getFullYear()}년 ${d.getMonth()+1}월 ${d.getDate()}일 (${DOW[(d.getDay()+6)%7]})`
+        +(ed?` ~ ${ed.getMonth()+1}월 ${ed.getDate()}일 (${DOW[(ed.getDay()+6)%7]}) · ${Math.round((ed-d)/864e5)+1}일간`:'')+(e.ampm?' · '+timeLabel(e):'')
+        +(e.remind&&e.remind.length?' · 🔔 '+e.remind.map(x=>({d0:'당일',d1:'1일 전',d3:'3일 전',d7:'1주 전',h1:'1시간 전'})[x]).join(', '):'');
       $('vAuthor').textContent=e.author||'—';
       $('vMemo').textContent=e.memo; $('vMemoWrap').style.display=e.memo?'':'none';
       renderLinks($('vLinks'), e.links); $('vLinksWrap').style.display=(e.links&&e.links.length)?'':'none';
@@ -842,9 +919,10 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
     const title=$('fTitle').value.trim();
     if(!title){ $('fErr').textContent='제목을 입력해 주세요.'; return; }
     if(!$('fDate').value){ $('fErr').textContent='날짜를 선택해 주세요.'; return; }
+    if($('fEnd').value && $('fEnd').value<$('fDate').value){ $('fErr').textContent='끝나는 날이 시작일보다 빨라요.'; return; }
     if(!col){ $('fErr').textContent='저장소에 연결되지 않았어요. 잠시 후 다시 시도해 주세요.'; return; }
     const author=$('fAuthor').value.trim();
-    const body={ title, date:$('fDate').value, ampm:$('fAmpm').value,
+    const body={ title, date:$('fDate').value, endDate:($('fEnd').value>$('fDate').value?$('fEnd').value:''), remind:getRem(), ampm:$('fAmpm').value,
       hour:Number($('fHour').value), min:Number($('fMin').value),
       memo:$('fMemo').value.trim(), author, updatedAt:new Date().toISOString(),
       links: linksFromText($('fLinks').value, editingId && (events.find(x=>x.id===editingId)||{}).links) };
@@ -1129,6 +1207,30 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
     $('feedUrl').value=feed; $('icalLink').href=web;
     $('gcalLink').href='https://calendar.google.com/calendar/r?cid='+encodeURIComponent(web);
   }
+  // ---------- 휴대폰 알림(웹 푸시) ----------
+  function b64u(s){ s=s.replace(/-/g,'+').replace(/_/g,'/'); const b=atob(s+'==='.slice((s.length+3)%4)); return Uint8Array.from(b,c=>c.charCodeAt(0)); }
+  function notiLabel(){ let on=false; try{ on=localStorage.getItem('cal.push')==='1' && Notification.permission==='granted'; }catch(e){} $('notiBtn').textContent= on?'🔔 알림 켜짐':'🔔 알림 켜기'; return on; }
+  $('notiBtn').addEventListener('click',async()=>{
+    const ok='serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
+    if(!ok){ toast(isIOS?'아이폰은 사파리 → 공유 → 「홈 화면에 추가」로 설치한 앱에서 알림을 켤 수 있어요':'이 브라우저는 알림을 지원하지 않아요. 크롬에서 열어 주세요'); return; }
+    try{
+      const reg=await navigator.serviceWorker.ready;
+      if(notiLabel()){
+        const sub=await reg.pushManager.getSubscription();
+        const r=await fetch(API+'/api/push/test',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({endpoint:sub&&sub.endpoint})});
+        toast(r.ok?'테스트 알림을 보냈어요':'테스트 알림을 보내지 못했어요'); return;
+      }
+      const perm=await Notification.requestPermission();
+      if(perm!=='granted'){ toast('알림이 허용되지 않았어요. 휴대폰 설정에서 이 앱의 알림을 켜 주세요'); return; }
+      const kr=await fetch(API+'/api/push/key'); const {key:k}=await kr.json();
+      let sub=await reg.pushManager.getSubscription();
+      if(!sub) sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64u(k)});
+      const r=await fetch(API+'/api/push/subscribe',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({sub:sub.toJSON(),name:myName||''})});
+      if(!r.ok) throw 0;
+      try{ localStorage.setItem('cal.push','1'); }catch(e){}
+      notiLabel(); toast('알림을 켰어요! 한 번 더 누르면 테스트 알림이 와요');
+    }catch(e){ toast('알림을 켜지 못했어요. 잠시 후 다시 시도해 주세요'); }
+  });
   $('calBtn').addEventListener('click',()=>{ setupSync(); $('dlErr').textContent=''; openModal('dlModal'); setTimeout(()=>$('calSync').scrollIntoView({block:'start'}),50); });
   $('copyFeed').addEventListener('click',async()=>{ try{ await navigator.clipboard.writeText($('feedUrl').value); toast('주소를 복사했어요'); }catch(e){ $('feedUrl').select(); toast('주소를 길게 눌러 복사해 주세요'); } });
   $('installNow').addEventListener('click',async()=>{
@@ -1140,7 +1242,7 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
     apiMode=true; canWrite=true;
     try{ apiPw=localStorage.getItem('cal.pw')||''; }catch(e){}
     const here=location.href.split('#')[0].split('?')[0]; $('appUrl').value=here; $('openBrowser').href=here;
-    $('calBtn').style.display='';
+    $('calBtn').style.display=''; if(hosted){ $('notiBtn').style.display=''; notiLabel(); }
     let state={events:{},baby:null}; const evL=[]; let babyL=null;
     const emit=()=>{ const docs=Object.entries(state.events||{}).map(([id,d])=>({id,exists:true,data:()=>d}));
       evL.forEach(cb=>cb({docs,metadata:{fromCache:false}})); babyL&&babyL({exists:!!state.baby,data:()=>state.baby}); };

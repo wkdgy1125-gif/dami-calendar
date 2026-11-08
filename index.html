@@ -105,6 +105,11 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
   .ev.span.lbl{overflow:visible;position:relative;z-index:2}
   .ev-sp{height:23px;margin-bottom:3px}
   .day.sel{background:color-mix(in srgb,var(--accent) 16%,white)!important;box-shadow:inset 0 0 0 2px var(--accent)}
+  .day.drop{background:color-mix(in srgb,#1f9d55 16%,white)!important;box-shadow:inset 0 0 0 2px #1f9d55}
+  .ev.lift{opacity:.45}
+  body.copying, body.copying *{cursor:copy!important}
+  #cpGhost{position:fixed;z-index:999;display:none;pointer-events:none;padding:4px 10px;border-radius:8px;font-size:12px;font-weight:700;
+    background:color-mix(in srgb,var(--c,#6b4fd8) 22%,white);border-left:4px solid var(--c,#6b4fd8);color:#2a2340;box-shadow:0 6px 18px rgba(0,0,0,.25);max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   body.edit #grid{touch-action:pan-y;user-select:none;-webkit-user-select:none}
   .more{font-size:12px;color:var(--muted);padding:0 4px}
 
@@ -318,7 +323,7 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
           <input id="fTitle" maxlength="80" required placeholder="예: 주간 회의"></div>
         <div class="field"><label>날짜</label>
           <div class="row"><input type="date" id="fDate" required aria-label="시작일"><span style="flex:0;align-self:center;color:var(--muted)">~</span><input type="date" id="fEnd" aria-label="종료일"></div>
-          <div class="hint">하루 일정은 뒤 칸을 비워 두세요. 이틀 이상이면 끝나는 날을 고르면 달력에 막대로 이어져 보여요. (편집 중에 달력에서 날짜를 끌어도 기간이 선택돼요)</div></div>
+          <div class="hint">하루 일정은 뒤 칸을 비워 두세요. 이틀 이상이면 끝나는 날을 고르면 달력에 막대로 이어져 보여요. (편집 중에 달력에서 날짜를 끌어도 기간이 선택돼요. 일정을 다른 날짜로 끌어 놓으면 똑같이 복사돼요 — 폰은 길게 누른 뒤 끌기)</div></div>
         <div class="field"><label>시간 (선택)</label>
           <div class="row">
             <select id="fAmpm"><option value="">시간 없음</option><option value="AM">오전</option><option value="PM">오후</option></select>
@@ -803,7 +808,7 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
           if(isS||wkS||listMode) b.textContent=(e.remind&&e.remind.length?'🔔 ':'')+e.title+(listMode?` · ${rg}`:'');
           else b.innerHTML='&nbsp;';
           b.title=`${e.title} (${rg}, ${n}일)`;
-          b.addEventListener('click',ev=>{ ev.stopPropagation(); openEvent(e); });
+          b._ev=e; b.addEventListener('click',ev=>{ ev.stopPropagation(); if(!dragJustEnded) openEvent(e); });
           box.appendChild(b);
         });
       }
@@ -828,7 +833,7 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
         b.appendChild(document.createTextNode((e.remind&&e.remind.length?'🔔 ':'')+e.title));
         if(e.author){ const a=document.createElement('span'); a.className='a'; a.textContent=e.author; b.appendChild(a); }
         b.title=(tl?tl+' ':'')+e.title+(e.author?` · ${e.author}`:'');
-        b.addEventListener('click',ev=>{ ev.stopPropagation(); openEvent(e); });
+        b._ev=e; b.addEventListener('click',ev=>{ ev.stopPropagation(); if(!dragJustEnded) openEvent(e); });
         box.appendChild(b);
       }
       if(list.length>shown.length){
@@ -857,7 +862,42 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
     const was=dragStart!==dragEnd; dragStart=dragEnd=null; paintSel();
     if(was && !cancel){ dragJustEnded=true; setTimeout(()=>dragJustEnded=false,350); openNew(a,b); } };
   window.addEventListener('pointerup',()=>endDrag(false));
-  $('grid').addEventListener('pointercancel',()=>endDrag(true));
+  $('grid').addEventListener('pointercancel',()=>{ endDrag(true); if(cp&&!cp.on) cpReset(); });
+
+  // 편집 모드에서 일정을 끌어다 다른 날짜에 놓으면 똑같이 복사
+  let cp=null;
+  const cpReset=()=>{ if(cp){ clearTimeout(cp.t); if(cp.btn) cp.btn.classList.remove('lift'); } cp=null; document.body.classList.remove('copying'); $('cpGhost').style.display='none'; paintCp(); };
+  function cpRange(to){ const off=Math.round((parseKey(to)-parseKey(cp.from))/864e5); const e=cp.e;
+    const a=key(addDays(parseKey(e.date),off)); const b=e.endDate?key(addDays(parseKey(e.endDate),off)):a; return {off,a,b}; }
+  function paintCp(){ const r=cp&&cp.on&&cp.to?cpRange(cp.to):null;
+    document.querySelectorAll('#grid .day').forEach(c=>c.classList.toggle('drop', !!r && r.off!==0 && c.dataset.date>=r.a && c.dataset.date<=r.b)); }
+  function cpStart(){ if(!cp) return; cp.on=true; cp.btn.classList.add('lift'); document.body.classList.add('copying');
+    const g=$('cpGhost'); g.textContent='📋 '+cp.e.title; g.style.setProperty('--c',getComputedStyle(cp.btn).getPropertyValue('--c')); g.style.display='block'; cpMove(cp.x,cp.y);
+    if(navigator.vibrate) try{navigator.vibrate(15);}catch(e){} }
+  function cpMove(x,y){ const g=$('cpGhost'); g.style.left=(x+12)+'px'; g.style.top=(y-34)+'px'; }
+  $('grid').addEventListener('pointerdown',e=>{
+    if(!editMode || e.button>0) return; const b=e.target.closest('.ev'); if(!b||!b._ev||!b._ev.id||!events.some(x=>x.id===b._ev.id)) return;
+    const from=dayAt(e.clientX,e.clientY); if(!from) return;
+    cp={e:b._ev, btn:b, from, to:from, x:e.clientX, y:e.clientY, on:false, touch:e.pointerType!=='mouse'};
+    if(cp.touch) cp.t=setTimeout(cpStart,380);   // 폰: 길게 누른 뒤 끌기
+  });
+  window.addEventListener('pointermove',e=>{ if(!cp) return;
+    const moved=Math.hypot(e.clientX-cp.x,e.clientY-cp.y);
+    if(!cp.on){ if(cp.touch){ if(moved>10) cpReset(); return; } if(moved<6) return; cpStart(); }
+    cpMove(e.clientX,e.clientY); const k=dayAt(e.clientX,e.clientY); if(k&&k!==cp.to){ cp.to=k; paintCp(); } });
+  document.addEventListener('touchmove',e=>{ if(cp&&cp.on) e.preventDefault(); },{passive:false});
+  $('grid').addEventListener('contextmenu',e=>{ if(cp) e.preventDefault(); });
+  window.addEventListener('pointerup',async()=>{ if(!cp) return; const c=cp; const r=c.on?cpRange(c.to):null; cpReset();
+    if(!c.on) return; dragJustEnded=true; setTimeout(()=>dragJustEnded=false,400);
+    if(!r||r.off===0) return;
+    if(!col){ toast('저장소에 연결되지 않았어요'); return; }
+    const src=c.e, now=new Date().toISOString();
+    const body={ title:src.title, date:r.a, endDate:src.endDate?r.b:'', remind:src.remind||[], ampm:src.ampm||'', hour:src.hour??9, min:src.min??0,
+      memo:src.memo||'', author:myName||src.author||'', cat:src.cat||'', links:src.links||[], updatedAt:now, createdAt:now };
+    if(src.sources&&src.sources.length) body.sources=src.sources;
+    try{ await col.add(body); const d=parseKey(r.a); toast(`복사했어요 → ${d.getMonth()+1}/${d.getDate()}`+(src.endDate?` ~ ${parseKey(r.b).getMonth()+1}/${parseKey(r.b).getDate()}`:'')); }
+    catch(err){ toast(errMsg(err)); }
+  });
   function setView(v){ view=v; try{localStorage.setItem('cal.view',v);}catch(e){} render(); }
 
   // ---------- modals ----------
@@ -1306,5 +1346,6 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
   })();
 })();
 </script>
+<div id="cpGhost"></div>
 </body>
 </html>

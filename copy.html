@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>담이 서버 코드 복사</title>
+<style>
+body{font-family:system-ui,sans-serif;background:#241a4d;color:#fff;margin:0;padding:24px;line-height:1.6}
+.box{max-width:520px;margin:auto;background:#fffdf5;color:#2a2340;border-radius:18px;padding:22px}
+button{width:100%;font-size:20px;font-weight:700;padding:18px;border:0;border-radius:14px;background:#6b4fd8;color:#fff}
+button.ok{background:#1f9d55}ol{padding-left:20px}code{background:#eee;padding:2px 6px;border-radius:6px}
+a{color:#6b4fd8}small{color:#777}
+</style></head><body><div class="box">
+<h2>✨ 담이 서버 코드 교체</h2>
+<button id="b">① 코드 복사하기</button>
+<p><small id="s">불러오는 중…</small></p>
+<ol>
+<li>위 버튼을 누르면 새 코드가 복사돼요.</li>
+<li><a href="https://dash.cloudflare.com/?to=/:account/workers/services/view/dami-api/production" target="_blank">Cloudflare dami-api 열기</a> → 「코드 편집」(&lt;/&gt;)</li>
+<li>편집기 안을 길게 눌러 <b>전체 선택</b> → 지우고 → <b>붙여넣기</b> → 「배포」</li>
+<li>dami-api → <b>설정 → 트리거(도메인 및 경로 아래) → Cron 트리거 추가</b> → <code>0 * * * *</code> 입력 → 저장</li>
+<li>담이 캘린더 앱에서 「🔔 알림 켜기」 → 허용 → 한 번 더 누르면 테스트 알림!</li>
+</ol></div>
+<script>
+let code='';const b=document.getElementById('b'),s=document.getElementById('s');
+fetch('dami-api-worker.js?'+Date.now()).then(r=>r.text()).then(t=>{code=t;s.textContent='준비됐어요 ('+t.split('\n').length+'줄)';});
+b.onclick=async()=>{try{await navigator.clipboard.writeText(code);}catch(e){const ta=document.createElement('textarea');ta.value=code;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();}
+b.textContent='✅ 복사 완료! 이제 ②로';b.className='ok';};
+</script></body></html>

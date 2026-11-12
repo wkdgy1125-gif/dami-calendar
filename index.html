@@ -110,6 +110,17 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
   body.copying, body.copying *{cursor:copy!important}
   #cpGhost{position:fixed;z-index:999;display:none;pointer-events:none;padding:4px 10px;border-radius:8px;font-size:12px;font-weight:700;
     background:color-mix(in srgb,var(--c,#6b4fd8) 22%,white);border-left:4px solid var(--c,#6b4fd8);color:#2a2340;box-shadow:0 6px 18px rgba(0,0,0,.25);max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #iosGuide{position:fixed;inset:0;z-index:1000;display:none;background:rgba(20,14,50,.72);color:#fff;font-size:15px;line-height:1.55}
+  #iosGuide.open{display:block}
+  #iosGuide .card{position:absolute;left:14px;right:14px;bottom:96px;background:#fffdf5;color:#2a2340;border-radius:18px;padding:18px 18px 14px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  #iosGuide .card.top{bottom:auto;top:70px}
+  #iosGuide h3{margin:0 0 8px;font-size:17px}
+  #iosGuide ol{margin:6px 0 8px;padding-left:22px}#iosGuide li{margin:6px 0}
+  #iosGuide .k{display:inline-block;background:#efeafe;color:#4b33b8;border-radius:7px;padding:0 7px;font-weight:700}
+  #iosGuide .row{display:flex;gap:8px;margin-top:10px}#iosGuide .row button,#iosGuide .row a{flex:1;white-space:nowrap;font-size:14px;text-align:center;border:0;border-radius:12px;padding:12px;font:inherit;font-weight:700;text-decoration:none}
+  #iosGuide .p{background:#6b4fd8;color:#fff}#iosGuide .s{background:#eee;color:#333}
+  #iosGuide .arrow{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);font-size:44px;animation:bob 1s ease-in-out infinite;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+  @keyframes bob{50%{transform:translate(-50%,10px)}}
   body.edit #grid{touch-action:pan-y;user-select:none;-webkit-user-select:none}
   .more{font-size:12px;color:var(--muted);padding:0 4px}
 
@@ -261,6 +272,7 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
 </style>
 </head>
 <body>
+<div id="iosGuide" role="dialog" aria-modal="true"><div class="card" id="iosCard"></div><div class="arrow" id="iosArrow">⬇️</div></div>
 <div class="sky" aria-hidden="true"><span class="star" style="left:8%;top:12%;font-size:14px;animation-delay:0s">★</span><span class="star" style="left:18%;top:30%;font-size:10px;animation-delay:0.6s">✦</span><span class="star" style="left:27%;top:8%;font-size:16px;animation-delay:1.2s">✦</span><span class="star" style="left:40%;top:22%;font-size:9px;animation-delay:0.3s">★</span><span class="star" style="left:52%;top:6%;font-size:12px;animation-delay:2s">✦</span><span class="star" style="left:61%;top:34%;font-size:10px;animation-delay:1.5s">✦</span><span class="star" style="left:70%;top:14%;font-size:13px;animation-delay:0.9s">★</span><span class="star" style="left:84%;top:40%;font-size:9px;animation-delay:2.4s">✦</span><span class="star" style="left:92%;top:20%;font-size:11px;animation-delay:0.4s">✦</span><span class="star" style="left:12%;top:55%;font-size:10px;animation-delay:1.8s">★</span><span class="star" style="left:33%;top:48%;font-size:8px;animation-delay:2.7s">✦</span><span class="star" style="left:47%;top:62%;font-size:12px;animation-delay:0.2s">✦</span><span class="star" style="left:58%;top:52%;font-size:9px;animation-delay:1.1s">★</span><span class="star" style="left:76%;top:58%;font-size:14px;animation-delay:2.1s">✦</span><span class="star" style="left:88%;top:70%;font-size:10px;animation-delay:0.7s">✦</span><span class="star" style="left:6%;top:80%;font-size:12px;animation-delay:1.4s">★</span><span class="star" style="left:22%;top:72%;font-size:9px;animation-delay:2.9s">✦</span><span class="star" style="left:66%;top:78%;font-size:11px;animation-delay:0.5s">✦</span><span class="star" style="left:95%;top:88%;font-size:9px;animation-delay:1.9s">★</span><span class="star" style="left:40%;top:86%;font-size:12px;animation-delay:2.3s">✦</span><div class="moon"></div><div class="cloud" style="left:-60px"></div><div class="cloud" style="right:-80px;bottom:-40px;transform:scale(1.3)"></div></div>
 <div class="wrap">
   <header>
@@ -480,7 +492,7 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
           <li>목록을 올려 「<b style="display:inline;font-size:13px">홈 화면에 추가</b>」 → 오른쪽 위 「추가」</li>
           <li>홈 화면의 <b style="display:inline;font-size:13px">「담」 아이콘</b>을 누르면 앱으로 열려요.</li>
         </ol>
-        <div class="hint">아이폰은 설치 버튼이 따로 없어서 위 방법으로만 설치할 수 있어요.</div>
+        <div class="hint">아이폰은 설치 버튼이 따로 없어서 위 방법으로만 설치할 수 있어요. 카카오톡으로 받은 링크라면 먼저 사파리로 열어 주세요.</div>
       </div>
       <div class="guide" id="calSync">
         <b>📅 폰 캘린더 앱에 담이 일정 넣기</b>
@@ -1222,9 +1234,44 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
   function registerSW(){ if(hosted && 'serviceWorker' in navigator){ window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{})); if(document.readyState==='complete') navigator.serviceWorker.register('sw.js').catch(()=>{}); } }
   window.addEventListener('beforeinstallprompt',e=>{ e.preventDefault(); installEvt=e; if(hosted) $('dlBtn').style.display=''; });
   window.addEventListener('appinstalled',()=>{ installEvt=null; $('dlBtn').style.display='none'; toast('앱이 설치됐어요'); });
-  function showInstallForIOS(){ if(hosted && isIOS && !standaloneNow()) $('dlBtn').style.display=''; }
+
+  // ---------- 아이폰 설치 안내 ----------
+  const isIOS=/iPhone|iPad|iPod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  const UA=navigator.userAgent;
+  const inApp=/KAKAOTALK|NAVER\(inapp|Instagram|FBAN|FBAV|Line\/|DaumApps|everytimeApp|BAND\/|Claude/i.test(UA) || (isIOS && !/Safari\//.test(UA) && !/CriOS|FxiOS|EdgiOS/.test(UA));
+  const iosOtherBrowser=/CriOS|FxiOS|EdgiOS|Whale/i.test(UA);
+  function iosGuide(){
+    const url=location.href.split('#')[0], card=$('iosCard'), arrow=$('iosArrow');
+    let h='';
+    if(inApp){
+      card.className='card top'; arrow.style.display='none';
+      const kakao=/KAKAOTALK/i.test(UA);
+      h=`<h3>⚠️ 지금은 ${kakao?'카카오톡':'앱'} 안에서 열려 있어요</h3>
+        아이폰은 <b>사파리</b>에서만 앱 설치가 돼요.
+        <ol>${kakao?'<li>아래 「사파리로 열기」를 눌러요.</li>':'<li>오른쪽 위(또는 아래) <span class="k">⋯</span> / <span class="k">공유</span> → 「<b>Safari로 열기</b>」를 눌러요.<br>없으면 「링크 복사」 후 사파리 주소창에 붙여넣어요.</li>'}
+        <li>사파리에서 다시 「📲 앱 설치」를 눌러요.</li></ol>
+        <div class="row">${kakao?`<a class="p" href="kakaotalk://web/openExternal?url=${encodeURIComponent(url)}">사파리로 열기</a>`:''}<button class="${kakao?'s':'p'}" id="iosCopy">링크 복사</button><button class="s" id="iosClose">닫기</button></div>`;
+    } else {
+      card.className='card'; arrow.style.display='';
+      h=`<h3>📲 아이폰에 담이 캘린더 설치</h3>
+        <ol><li>화면 아래 ${iosOtherBrowser?'주소창 옆 ':''}<span class="k">공유 □↑</span> 버튼을 눌러요.<br><small>안 보이면 <span class="k">⋯</span>(점 3개) → <span class="k">공유</span></small></li>
+        <li>목록을 위로 올려 「<b>홈 화면에 추가</b>」를 눌러요.</li>
+        <li>「웹 앱으로 열기」가 보이면 켜 두고, 오른쪽 위 「<b>추가</b>」!</li>
+        <li>홈 화면의 <b>「담」 아이콘</b>으로 열면 앱처럼 써요.</li></ol>
+        ${iosOtherBrowser?'<small>크롬 등에서 「홈 화면에 추가」가 없으면 사파리로 열어 주세요 (iOS 16.4 이상 필요).</small>':''}
+        <div class="row"><button class="s" id="iosCopy">링크 복사</button><button class="p" id="iosClose">알겠어요</button></div>`;
+    }
+    card.innerHTML=h; $('iosGuide').classList.add('open');
+    $('iosClose').onclick=()=>$('iosGuide').classList.remove('open');
+    $('iosCopy').onclick=async()=>{ try{ await navigator.clipboard.writeText(url); toast('링크를 복사했어요 · 사파리 주소창에 붙여넣어 주세요'); }catch(e){ prompt('이 주소를 복사해 사파리에 붙여넣어 주세요',url); } };
+  }
+  $('iosGuide').addEventListener('click',e=>{ if(e.target.id==='iosGuide') $('iosGuide').classList.remove('open'); });
+  function showInstallForIOS(){ if(hosted && isIOS && !standaloneNow()){ $('dlBtn').style.display='';
+    let seen=false; try{ seen=localStorage.getItem('cal.iosGuide')==='1'; localStorage.setItem('cal.iosGuide','1'); }catch(e){}
+    if(!seen || inApp) setTimeout(iosGuide,900); } }
   $('dlBtn').addEventListener('click',async()=>{
     if(installEvt){ installEvt.prompt(); try{ await installEvt.userChoice; }catch(_){} installEvt=null; $('dlBtn').style.display='none'; return; }
+    if(isIOS && !standaloneNow()){ iosGuide(); return; }
     setupSync(); $('dlErr').textContent=''; openModal('dlModal');
   });
   async function doSave(name,make){
@@ -1233,7 +1280,6 @@ window.__OFFLINE__={"events": [{"id": "dam-01", "title": "배우자 출산전후
     catch(e){ const c=e&&e.code;
       $('dlErr').textContent = c==='declined' ? '저장을 취소했어요.' : c==='rate_limited' ? '잠시 후 다시 눌러 주세요.' : '이 화면에서는 파일을 저장할 수 없어요.'; }
   }
-  const isIOS=/iPhone|iPad|iPod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
   function setOS(os){
     document.querySelectorAll('#osSeg button').forEach(b=>b.classList.toggle('on',b.dataset.os===os));
     $('osAndroid').style.display = os==='android'?'':'none'; $('osIos').style.display = os==='ios'?'':'none';
